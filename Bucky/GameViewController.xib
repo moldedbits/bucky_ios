@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController" customModule="Bucky" customModuleProvider="target">
             <connections>
-                <outlet property="backgroundImage" destination="zjI-oQ-Zkl" id="9a5-rA-E88"/>
+                <outlet property="backgroundImage" destination="zjI-oQ-Zkl" id="RPh-iN-Pau"/>
                 <outlet property="cactus1" destination="Hws-h6-wam" id="PTg-9i-o5r"/>
                 <outlet property="cactus2" destination="VXn-j8-HIH" id="jbR-jy-YQS"/>
                 <outlet property="cloud1" destination="j6a-Fs-Uy8" id="f5h-4M-ycs"/>
