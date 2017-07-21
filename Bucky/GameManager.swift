@@ -31,6 +31,10 @@ class GameManager {
         
         if currentScore > highestScore {
             highestScore = currentScore
+            AnimationManager.highScoreAnimate()
+        }
+        if leftLives == 0 {
+            Animationmanager.gameOver()
         }
         
         
