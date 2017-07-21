@@ -8,8 +8,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Avenir.ttc">
-            <string>Avenir-Book</string>
+        <array key="Chalkduster.ttf">
+            <string>Chalkduster</string>
         </array>
     </customFonts>
     <objects>
@@ -30,32 +30,30 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" red="0.80000001190000003" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LKb-TA-Ko4">
-                    <rect key="frame" x="63" y="294" width="250" height="80"/>
-                    <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LKb-TA-Ko4">
+                    <rect key="frame" x="62.5" y="293.5" width="250" height="80"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="GkE-qN-poQ"/>
                         <constraint firstAttribute="height" constant="80" id="sxv-p2-yf4"/>
                     </constraints>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                    <state key="normal" backgroundImage="images"/>
+                    <state key="normal" image="play_kaushal (1)" backgroundImage="play_kaushal"/>
                     <connections>
                         <action selector="playGameButtonTapped:" destination="-1" eventType="touchUpInside" id="1gO-Zs-9gD"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXe-22-Vzc">
-                    <rect key="frame" x="139.5" y="424" width="96" height="24"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                    <rect key="frame" x="124" y="423.5" width="128" height="28"/>
+                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="22"/>
                     <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Welcome To Bucky!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuB-RZ-Y8U">
-                    <rect key="frame" x="63" y="214" width="250" height="30"/>
+                    <rect key="frame" x="63" y="213.5" width="250" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="JPs-Gj-jSO"/>
                         <constraint firstAttribute="width" constant="250" id="rVo-jD-03U"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
+                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
                     <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -78,6 +76,7 @@
     </objects>
     <resources>
         <image name="bg-sunny" width="320" height="568"/>
-        <image name="images" width="256" height="150"/>
+        <image name="play_kaushal" width="249" height="125"/>
+        <image name="play_kaushal (1)" width="249" height="125"/>
     </resources>
 </document>

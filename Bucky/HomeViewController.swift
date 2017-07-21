@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var highScoreLabel: UILabel! {
         didSet {
-                highScoreLabel.text = "High Score  \(highScore)"
+                highScoreLabel.text = "High Score \(highScore)"
             }
     }
     @IBOutlet weak var playGameButton: UIButton! {
@@ -26,15 +26,18 @@ class HomeViewController: UIViewController {
     var highScore: Int = 0
     
     @IBAction func playGameButtonTapped(_ sender: UIButton) {
+        print("Tapped")
     }
   
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        playGameButton.center.x  -= view.bounds.width
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 0.8, delay: 0.7, options: [.autoreverse,.repeat,.allowUserInteraction],animations: {
+        self.playGameButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        },completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
