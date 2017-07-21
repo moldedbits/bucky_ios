@@ -10,12 +10,15 @@ import UIKit
 
 class BallView: UIView {
     
-    var ballType: String
-    var score: Int
+    var ballType: String = "red"
+    var score: Int = 3
+    
     init(ballType: String, score: Int, frame: CGRect) {
+        super.init(frame: frame)
+        
         self.ballType = ballType
         self.score = score
-        super.init(frame: frame)
     }
+    
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented"); }
 }

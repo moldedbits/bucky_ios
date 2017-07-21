@@ -21,10 +21,10 @@ class GameManager {
         self.highestScore = highestScore
     }
     
-    func checkBallIsFoulOrCatch(bucket: UIView, ball : BallView) {
-        if bucket.frame.intersects(ball.frame) {
+    func checkBallIsFoulOrCatch(bucket: BucketView, ball : BallView) {
+        if bucket.frame.intersects(ball.frame) {            
             currentScore += ball.score
-            
+            bucket.incrementNumberOfBallCollected()
         }else {
             leftLives -= 1
         }
@@ -36,8 +36,5 @@ class GameManager {
         if leftLives == 0 {
             Animationmanager.gameOver()
         }
-        
-        
-        
     }
 }
