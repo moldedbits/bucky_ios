@@ -15,6 +15,7 @@
 		41E9FCF41F21C5D400EECAA7 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E9FCF31F21C5D400EECAA7 /* GameManager.swift */; };
 		41E9FCFC1F21D30B00EECAA7 /* BallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E9FCFB1F21D30B00EECAA7 /* BallView.swift */; };
 		41E9FCFE1F21D34300EECAA7 /* BucketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E9FCFD1F21D34300EECAA7 /* BucketView.swift */; };
+		41E9FD021F22070100EECAA7 /* FallingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E9FD011F22070100EECAA7 /* FallingObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		41E9FCF31F21C5D400EECAA7 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		41E9FCFB1F21D30B00EECAA7 /* BallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallView.swift; sourceTree = "<group>"; };
 		41E9FCFD1F21D34300EECAA7 /* BucketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketView.swift; sourceTree = "<group>"; };
+		41E9FD011F22070100EECAA7 /* FallingObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallingObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				41E9FCF31F21C5D400EECAA7 /* GameManager.swift */,
 				41E9FCFB1F21D30B00EECAA7 /* BallView.swift */,
 				41E9FCFD1F21D34300EECAA7 /* BucketView.swift */,
+				41E9FD011F22070100EECAA7 /* FallingObject.swift */,
 			);
 			path = Bucky;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				41E9FCF41F21C5D400EECAA7 /* GameManager.swift in Sources */,
 				22D73AC11F20F621009BF0C0 /* AppDelegate.swift in Sources */,
 				41E9FCFC1F21D30B00EECAA7 /* BallView.swift in Sources */,
+				41E9FD021F22070100EECAA7 /* FallingObject.swift in Sources */,
 				41E9FCFE1F21D34300EECAA7 /* BucketView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
