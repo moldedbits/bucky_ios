@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CA860431F21C6F100A21816 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA860411F21C6F100A21816 /* HomeViewController.swift */; };
+		1CA860441F21C6F100A21816 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CA860421F21C6F100A21816 /* HomeViewController.xib */; };
 		22D73AC11F20F621009BF0C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D73AC01F20F621009BF0C0 /* AppDelegate.swift */; };
 		22D73AC31F20F621009BF0C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D73AC21F20F621009BF0C0 /* ViewController.swift */; };
 		22D73AC61F20F621009BF0C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22D73AC41F20F621009BF0C0 /* Main.storyboard */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1CA860411F21C6F100A21816 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1CA860421F21C6F100A21816 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		22D73ABD1F20F621009BF0C0 /* Bucky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bucky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D73AC01F20F621009BF0C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22D73AC21F20F621009BF0C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 			children = (
 				22D73AC01F20F621009BF0C0 /* AppDelegate.swift */,
 				22D73AC21F20F621009BF0C0 /* ViewController.swift */,
+				1CA860411F21C6F100A21816 /* HomeViewController.swift */,
+				1CA860421F21C6F100A21816 /* HomeViewController.xib */,
 				22D73AC41F20F621009BF0C0 /* Main.storyboard */,
 				22D73AC71F20F621009BF0C0 /* Assets.xcassets */,
 				22D73AC91F20F621009BF0C0 /* LaunchScreen.storyboard */,
@@ -134,6 +140,7 @@
 				22D73ACB1F20F621009BF0C0 /* LaunchScreen.storyboard in Resources */,
 				22D73AC81F20F621009BF0C0 /* Assets.xcassets in Resources */,
 				22D73AC61F20F621009BF0C0 /* Main.storyboard in Resources */,
+				1CA860441F21C6F100A21816 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +154,7 @@
 				22D73AC31F20F621009BF0C0 /* ViewController.swift in Sources */,
 				41E9FCF41F21C5D400EECAA7 /* GameManager.swift in Sources */,
 				22D73AC11F20F621009BF0C0 /* AppDelegate.swift in Sources */,
+				1CA860431F21C6F100A21816 /* HomeViewController.swift in Sources */,
 				41E9FCFC1F21D30B00EECAA7 /* BallView.swift in Sources */,
 				41E9FCFE1F21D34300EECAA7 /* BucketView.swift in Sources */,
 			);
