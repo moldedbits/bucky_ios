@@ -27,6 +27,9 @@ class HomeViewController: UIViewController {
     
     @IBAction func playGameButtonTapped(_ sender: UIButton) {
         print("Tapped")
+        // check for end game view controller
+        let endViewController = EndViewController()
+        navigationController?.pushViewController(endViewController, animated: true)
     }
   
     override func viewDidLoad() {
