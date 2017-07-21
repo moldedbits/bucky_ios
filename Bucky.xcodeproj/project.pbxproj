@@ -12,6 +12,9 @@
 		22D73AC61F20F621009BF0C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22D73AC41F20F621009BF0C0 /* Main.storyboard */; };
 		22D73AC81F20F621009BF0C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22D73AC71F20F621009BF0C0 /* Assets.xcassets */; };
 		22D73ACB1F20F621009BF0C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22D73AC91F20F621009BF0C0 /* LaunchScreen.storyboard */; };
+		41E9FCF41F21C5D400EECAA7 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E9FCF31F21C5D400EECAA7 /* GameManager.swift */; };
+		41E9FCFC1F21D30B00EECAA7 /* BallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E9FCFB1F21D30B00EECAA7 /* BallView.swift */; };
+		41E9FCFE1F21D34300EECAA7 /* BucketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E9FCFD1F21D34300EECAA7 /* BucketView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		22D73AC71F20F621009BF0C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22D73ACA1F20F621009BF0C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22D73ACC1F20F621009BF0C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41E9FCF31F21C5D400EECAA7 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		41E9FCFB1F21D30B00EECAA7 /* BallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallView.swift; sourceTree = "<group>"; };
+		41E9FCFD1F21D34300EECAA7 /* BucketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,9 @@
 				22D73AC71F20F621009BF0C0 /* Assets.xcassets */,
 				22D73AC91F20F621009BF0C0 /* LaunchScreen.storyboard */,
 				22D73ACC1F20F621009BF0C0 /* Info.plist */,
+				41E9FCF31F21C5D400EECAA7 /* GameManager.swift */,
+				41E9FCFB1F21D30B00EECAA7 /* BallView.swift */,
+				41E9FCFD1F21D34300EECAA7 /* BucketView.swift */,
 			);
 			path = Bucky;
 			sourceTree = "<group>";
@@ -136,7 +145,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				22D73AC31F20F621009BF0C0 /* ViewController.swift in Sources */,
+				41E9FCF41F21C5D400EECAA7 /* GameManager.swift in Sources */,
 				22D73AC11F20F621009BF0C0 /* AppDelegate.swift in Sources */,
+				41E9FCFC1F21D30B00EECAA7 /* BallView.swift in Sources */,
+				41E9FCFE1F21D34300EECAA7 /* BucketView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +322,7 @@
 				22D73AD11F20F621009BF0C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
