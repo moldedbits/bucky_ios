@@ -13,12 +13,12 @@ class GameManager {
     
     var currentScore:Int
     var leftLives :Int
-    var highestScore: Int
-    
-    init(currentScore: Int, leftLives: Int, highestScore: Int){
+    var highestScore: Int = 0
+        
+    init(currentScore: Int, leftLives: Int){
         self.currentScore = currentScore
         self.leftLives = leftLives
-        self.highestScore = highestScore
+        self.highestScore = UserDefaults.standard.integer(forKey: "highestScore") as! Int
     }
     
     func checkBallIsFoulOrCatch(bucket: BucketView, ball : BallView) {
@@ -27,14 +27,13 @@ class GameManager {
             bucket.incrementNumberOfBallCollected()
         }else {
             leftLives -= 1
-        }
-        
+        }        
         if currentScore > highestScore {
             highestScore = currentScore
-            AnimationManager.highScoreAnimate()
+            //AnimationManager.highScoreAnimate()
         }
         if leftLives == 0 {
-            Animationmanager.gameOver()
+           // Animationmanager.gameOver()
         }
     }
 }
