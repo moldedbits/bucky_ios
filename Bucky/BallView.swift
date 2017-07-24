@@ -8,13 +8,13 @@
 
 import UIKit
 
-class BallView: UIView {
+class BallView: UIImageView{
     
     var ballType: String = "red"
     var score: Int = 3
     
-    init(ballType: String, score: Int, frame: CGRect) {
-        super.init(frame: frame)
+    init(ballType: String, score: Int, image: UIImage) {
+        super.init(image: image)
         
         self.ballType = ballType
         self.score = score

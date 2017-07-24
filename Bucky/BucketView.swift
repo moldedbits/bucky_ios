@@ -8,19 +8,19 @@
 
 import UIKit
 
-class BucketView: UIView {
+class BucketView: UIImageView {
     
     var numberOfBallCollected: Int = 0
-        
-    init(frame: CGRect, numberOfBallCollected: Int) {
-        super.init(frame: frame)
+    
+    init(numberOfBallCollected: Int, image: UIImage) {
+        super.init(image: image)
         
         self.numberOfBallCollected = numberOfBallCollected
     }
     
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented"); }
     
-     func incrementNumberOfBallCollected() {
-            numberOfBallCollected += 1    
+    func incrementNumberOfBallCollected() {
+        numberOfBallCollected += 1
     }
 }
