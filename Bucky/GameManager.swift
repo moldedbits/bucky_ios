@@ -9,13 +9,22 @@
 import Foundation
 import UIKit
 
-class GameManager {
+protocol GameManagerProtocol {
+    func gameManagerDidEncounterGameOver(_ gameManager: GameManager)
+    func gameManagerDidUpdateScore(_ gameManager: GameManager, newScore: Int)
+    func gameManagerDidUpdateLives(_ gameManager: GameManager, leftLives: Int)
+    func gameManagerDidUpdateHighScore(_ gameManager: GameManager, highScore: Int)
+    func gameManagerIncrementBallInBucket(_ gameManager: GameManager)
+}
+
+class GameManager  {
     
     var currentScore:Int
     var leftLives :Int
     var highestScore: Int = 0
-        
-    init(currentScore: Int, leftLives: Int){
+    var delegate: GameManagerProtocol?
+    
+    init(currentScore: Int, leftLives: Int, viewController: UIViewController){
         self.currentScore = currentScore
         self.leftLives = leftLives
         self.highestScore = UserDefaults.standard.integer(forKey: "highestScore") as! Int
@@ -24,16 +33,18 @@ class GameManager {
     func checkBallIsFoulOrCatch(bucket: BucketView, ball : BallView) {
         if bucket.frame.intersects(ball.frame) {            
             currentScore += ball.score
-            bucket.incrementNumberOfBallCollected()
+            delegate?.gameManagerIncrementBallInBucket(self)
+            delegate?.gameManagerDidUpdateScore(self, newScore: currentScore)
         }else {
             leftLives -= 1
+            delegate?.gameManagerDidUpdateLives(self, leftLives: leftLives)
         }        
         if currentScore > highestScore {
             highestScore = currentScore
-            AnimationManager.highScoreAnimate()
+            delegate?.gameManagerDidUpdateHighScore(self, highScore: highestScore)
         }
         if leftLives == 0 {
-            AnimationManager.gameOver()
+            delegate?.gameManagerDidEncounterGameOver(self)
         }
     }
 }

@@ -10,17 +10,14 @@ import UIKit
 
 class BucketView: UIImageView {
     
-    var numberOfBallCollected: Int = 0
+    var numberOfBallInBucket: Int = 0
     
-    init(numberOfBallCollected: Int, image: UIImage) {
+    init(numberOfBallInBucket: Int, image: UIImage) {
         super.init(image: image)
         
-        self.numberOfBallCollected = numberOfBallCollected
+        self.numberOfBallInBucket = numberOfBallInBucket
     }
     
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented"); }
     
-    func incrementNumberOfBallCollected() {
-        numberOfBallCollected += 1
-    }
 }
