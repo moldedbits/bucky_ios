@@ -25,21 +25,20 @@ class EndViewController: UIViewController {
             homePageButton.layer.cornerRadius = 20
         }
     }
-    @IBOutlet weak var endGameButton: UIButton! {
-        didSet {
-            endGameButton.layer.cornerRadius = 20
-        }
-    }
     
     var currentScore: Int = 0
     var highScore: Int = 0
     
     @IBAction func homePageButtonTapped(_ sender: Any) {
+        let homeViewController = HomeViewController()
+        navigationController?.pushViewController(homeViewController, animated: true)
     }
     
-    @IBAction func endGameButtonTapped(_ sender: Any) {
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if currentScore >= highScore {
+           // present()
+        }
     }
 }

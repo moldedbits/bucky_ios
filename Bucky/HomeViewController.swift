@@ -38,7 +38,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIView.animate(withDuration: 0.8, delay: 0.7, options: [.autoreverse,.repeat,.allowUserInteraction],animations: {
+        UIView.animate(withDuration: 0.7, delay: 0.3, options: [.autoreverse,.repeat,.allowUserInteraction],animations: {
         self.playGameButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
         },completion: nil)
     }

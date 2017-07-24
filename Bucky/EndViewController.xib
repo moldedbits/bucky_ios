@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +12,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EndViewController" customModule="Bucky" customModuleProvider="target">
             <connections>
                 <outlet property="currentScoreLabel" destination="Y2p-WD-4yh" id="0nW-zA-Xkz"/>
-                <outlet property="endGameButton" destination="AND-8w-61r" id="dyT-x9-XYc"/>
                 <outlet property="highScoreLabel" destination="tWo-zd-eMe" id="Jo4-1A-rYm"/>
                 <outlet property="homePageButton" destination="MfJ-Ay-GMp" id="OvC-Ew-SiL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -38,20 +38,6 @@
                         <action selector="homePageButtonTapped:" destination="-1" eventType="touchUpInside" id="QYG-iu-5nn"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AND-8w-61r">
-                    <rect key="frame" x="87" y="414" width="200" height="40"/>
-                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.79454730308219168" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="200" id="9cY-av-1bh"/>
-                        <constraint firstAttribute="height" constant="40" id="dUA-Gm-ZaE"/>
-                    </constraints>
-                    <state key="normal" title="End Game">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="endGameButtonTapped:" destination="-1" eventType="touchUpInside" id="DJg-aU-Byq"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2p-WD-4yh">
                     <rect key="frame" x="30" y="143" width="150" height="21"/>
                     <constraints>
@@ -70,21 +56,26 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tiw-v1-2iT">
+                    <rect key="frame" x="67" y="178" width="240" height="128"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Tiw-v1-2iT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0wD-rX-UqD"/>
+                <constraint firstItem="7S3-zi-brw" firstAttribute="centerX" secondItem="MfJ-Ay-GMp" secondAttribute="centerX" id="2qA-iZ-nrI"/>
                 <constraint firstItem="7S3-zi-brw" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="8WB-gR-rzW"/>
-                <constraint firstItem="7S3-zi-brw" firstAttribute="centerX" secondItem="AND-8w-61r" secondAttribute="centerX" id="PS0-zg-xmD"/>
-                <constraint firstItem="AND-8w-61r" firstAttribute="top" secondItem="MfJ-Ay-GMp" secondAttribute="bottom" constant="60" id="SMc-uf-ahS"/>
                 <constraint firstItem="7S3-zi-brw" firstAttribute="centerY" secondItem="MfJ-Ay-GMp" secondAttribute="centerY" id="TVJ-8Y-4Bo"/>
                 <constraint firstItem="7S3-zi-brw" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="cut-zw-EH8"/>
                 <constraint firstItem="MfJ-Ay-GMp" firstAttribute="top" secondItem="Y2p-WD-4yh" secondAttribute="bottom" constant="150" id="d5Z-wm-fcS"/>
                 <constraint firstItem="MfJ-Ay-GMp" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="eni-3x-IHF"/>
                 <constraint firstItem="MfJ-Ay-GMp" firstAttribute="top" secondItem="tWo-zd-eMe" secondAttribute="bottom" constant="150" id="fIC-xB-heg"/>
+                <constraint firstItem="MfJ-Ay-GMp" firstAttribute="top" secondItem="Tiw-v1-2iT" secondAttribute="bottom" constant="8" symbolic="YES" id="gTy-r4-wDG"/>
+                <constraint firstItem="Tiw-v1-2iT" firstAttribute="top" secondItem="Y2p-WD-4yh" secondAttribute="bottom" constant="14" id="hOe-oi-pZO"/>
                 <constraint firstItem="Y2p-WD-4yh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="lWr-ly-WRY"/>
+                <constraint firstItem="Tiw-v1-2iT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="67" id="mv5-tX-gfs"/>
                 <constraint firstAttribute="trailing" secondItem="tWo-zd-eMe" secondAttribute="trailing" constant="30" id="pGa-Bb-wY7"/>
                 <constraint firstItem="MfJ-Ay-GMp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="uH5-co-l2j"/>
-                <constraint firstItem="AND-8w-61r" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xHR-7F-mLI"/>
             </constraints>
             <point key="canvasLocation" x="34.5" y="53.5"/>
         </view>
