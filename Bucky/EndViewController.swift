@@ -36,9 +36,5 @@ class EndViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if currentScore >= highScore {
-           // present()
-        }
     }
 }
