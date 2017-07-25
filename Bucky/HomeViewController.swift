@@ -27,8 +27,9 @@ class HomeViewController: UIViewController {
     
     @IBAction func playGameButtonTapped(_ sender: UIButton) {
         print("Tapped")
-//        let game = GameViewController()
-//        navigationController?.pushViewController(game, animated: true)
+        // check for end game view controller
+        let endViewController = EndViewController()
+        navigationController?.pushViewController(endViewController, animated: true)
     }
   
     override func viewDidLoad() {
@@ -37,8 +38,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIView.animate(withDuration: 0.8, delay: 0.7, options: [.autoreverse,.repeat,.allowUserInteraction],animations: {
-        self.playGameButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        UIView.animate(withDuration: 0.7, delay: 0, options: [.autoreverse,.repeat,.allowUserInteraction],animations: {
+        self.playGameButton.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         },completion: nil)
     }
     
