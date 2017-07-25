@@ -10,16 +10,16 @@ import Foundation
 import UIKit
 
 protocol GameManagerProtocol {
-    func gameManager(_ gameManager: GameManager,DidGameStart fallingObject: FallingObject)
-    func gameManager(_ gameManager: GameManager, DidSpawnNewFallingObject fallingObject: FallingObject)
-    func gameManager(_ gameManager: GameManager, DidUpdateCurrentScore NewScore: Int)
-    func gameManager(_ gameManager: GameManager, DidUpdateLives Lives: Int)
-    func gameManager(_ gameManager: GameManager, RemoveFromSuperView ball: FallingObject)
-    func gameManager(_ gameManager: GameManager, DidUpdateHighScore HighScore: Int)
+    func gameManager(_ gameManager: GameManager, didGameStart fallingObject: FallingObject)
+    func gameManager(_ gameManager: GameManager, didSpawnNewFallingObject fallingObject: FallingObject)
+    func gameManager(_ gameManager: GameManager, didUpdateCurrentScore newScore: Int)
+    func gameManager(_ gameManager: GameManager, didUpdateLives lives: Int)
+    func gameManager(_ gameManager: GameManager, removeFromSuperView ball: FallingObject)
+    func gameManager(_ gameManager: GameManager, didUpdateHighScore highScore: Int)
     func gameManagerDidEncounterGameOver(_ gameManager: GameManager)
 }
 
-class GameManager  {
+class GameManager {
     
     var currentScore:Int = 0
     var leftLives :Int = 3
@@ -39,16 +39,9 @@ class GameManager  {
         let index = 0
         var velocity = Double(arc4random_uniform(6) + 5 )
         let fallingObject = FallingObject( objectType: FallingObjectType.ballBlue, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
-        delegate?.gameManager(self, DidGameStart: fallingObject)
+        delegate?.gameManager(self, didGameStart: fallingObject)
         
         repeatFallingObjects()
-    }
-    
-    @objc func spawnNewFallingObject() {
-        var velocity = Double(arc4random_uniform(6) + 5)
-        let fallingObject  = FallingObject(objectType: FallingObjectType.ballBlue, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
-        delegate?.gameManager(self, DidSpawnNewFallingObject: fallingObject)
-        
     }
     
     func repeatFallingObjects() {
@@ -59,22 +52,28 @@ class GameManager  {
         timer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(spawnNewFallingObject), userInfo: nil, repeats: true)
     }
     
+    @objc func spawnNewFallingObject() {
+        let velocity = Double(arc4random_uniform(6) + 5)
+        let fallingObject  = FallingObject(objectType: FallingObjectType.ballBlue, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
+        delegate?.gameManager(self, didSpawnNewFallingObject: fallingObject)
+    }
+    
     func checkBallIsFoulOrCatch(bucket: UIView, ball : FallingObject) {
         if bucket.frame.intersects(ball.frame) {
             currentScore += ball.type.score
             
-            delegate?.gameManager(self, DidUpdateCurrentScore: currentScore)
-            delegate?.gameManager(self, RemoveFromSuperView: ball)
-        }else {
+            delegate?.gameManager(self, didUpdateCurrentScore: currentScore)
+            delegate?.gameManager(self, removeFromSuperView: ball)
+        } else {
             leftLives -= 1
-            delegate?.gameManager(self, DidUpdateLives: leftLives)
-            delegate?.gameManager(self, RemoveFromSuperView: ball)
+            delegate?.gameManager(self, didUpdateLives: leftLives)
+            delegate?.gameManager(self, removeFromSuperView: ball)
         }
         if currentScore > highestScore {
             highestScore = currentScore
-            delegate?.gameManager(self, DidUpdateHighScore: highestScore)
+            delegate?.gameManager(self, didUpdateHighScore: highestScore)
         }
-        if leftLives == 0 {
+        if leftLives <= 0 {
             delegate?.gameManagerDidEncounterGameOver(self)
         }
     }

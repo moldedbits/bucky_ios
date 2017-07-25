@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 struct UserDefaultsKey {
     
     static let highestScore: String = "HighestScore"
