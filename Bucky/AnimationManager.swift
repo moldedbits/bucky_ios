@@ -17,7 +17,7 @@ class AnimationManager {
     func animateStart(score : UILabel, highscore : UILabel , lives : [UIImageView] ) {
         UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: [], animations: {
             score.center.x -= 200
-//            highscore.center.x += 200
+            highscore.center.x += 200
             for life in lives {
                 life.center.y -= 200
             }
@@ -25,19 +25,15 @@ class AnimationManager {
     }
 
     func animateScore(label : UILabel, score : Int){
-
-//        let animation : CABasicAnimation = CABasicAnimation(keyPath: "transform.translation.x")
-//        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-//
-//        animation.repeatCount =  5
-//        animation.duration = (0.1)/TimeInterval(animation.repeatCount)
-//        animation.autoreverses = true
-//        animation.byValue =  -7
-//        label.layer.add(animation, forKey: "shake")
-
-//        UIView.animate(withDuration: 0.25, delay: 0, options: [.autoreverse], animations: {
-//            label.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-//        },completion: nil)
+        UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: [], animations: {
+            label.text = "\(score)"
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2, animations: {
+                label.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.2, animations: {
+                label.transform = CGAffineTransform(scaleX: 0.834, y: 0.834)
+            })
+        }, completion: nil)
     }
 
     func animateFoul(view : UIView, lives : [UIImageView], remainingLifeCount : Int) {
