@@ -22,8 +22,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C21A4111F2600FC005E2386 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		1C21A4121F2600FC005E2386 /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		1CA860411F21C6F100A21816 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1CA860421F21C6F100A21816 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		1CE4984B1F221CA3001B266B /* EndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndViewController.swift; sourceTree = "<group>"; };
@@ -76,8 +74,6 @@
 				22D73AC01F20F621009BF0C0 /* AppDelegate.swift */,
 				1CA860411F21C6F100A21816 /* HomeViewController.swift */,
 				1CA860421F21C6F100A21816 /* HomeViewController.xib */,
-				1C21A4111F2600FC005E2386 /* GameViewController.swift */,
-				1C21A4121F2600FC005E2386 /* GameViewController.xib */,
 				22B87DB31F25C8E8000BD5A8 /* AnimationManager.swift */,
 				22C0983A1F260B310014E317 /* GameViewController.swift */,
 				22C098391F260B310014E317 /* GameViewController.xib */,
