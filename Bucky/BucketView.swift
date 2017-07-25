@@ -12,10 +12,11 @@ class BucketView: UIImageView {
     
     var numberOfBallInBucket: Int = 0
     
-    init(numberOfBallInBucket: Int, image: UIImage) {
-        super.init(image: image)
+    init(y: Int) {
+        super.init(image: #imageLiteral(resourceName: "bucketImage"))
         
-        self.numberOfBallInBucket = numberOfBallInBucket
+        self.numberOfBallInBucket = 0
+        self.frame = CGRect(x: 200, y: y - 200, width: 150, height: 200)
     }
     
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented"); }
