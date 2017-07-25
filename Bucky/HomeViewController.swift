@@ -31,19 +31,14 @@ class HomeViewController: UIViewController {
         let endViewController = EndViewController()
         navigationController?.pushViewController(endViewController, animated: true)
     }
-  
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 0.7, delay: 0, options: [.autoreverse,.repeat,.allowUserInteraction],animations: {
         self.playGameButton.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         },completion: nil)
+        
+    
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 }

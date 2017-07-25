@@ -19,6 +19,7 @@
 		41E9FCF41F21C5D400EECAA7 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E9FCF31F21C5D400EECAA7 /* GameManager.swift */; };
 		41E9FCFC1F21D30B00EECAA7 /* BallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E9FCFB1F21D30B00EECAA7 /* BallView.swift */; };
 		41E9FCFE1F21D34300EECAA7 /* BucketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E9FCFD1F21D34300EECAA7 /* BucketView.swift */; };
+		A31F8B551F25FF800019F098 /* FallingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31F8B541F25FF800019F098 /* FallingObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,9 @@
 		41E9FCF31F21C5D400EECAA7 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		41E9FCFB1F21D30B00EECAA7 /* BallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallView.swift; sourceTree = "<group>"; };
 		41E9FCFD1F21D34300EECAA7 /* BucketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketView.swift; sourceTree = "<group>"; };
+		A31F8B521F25FF490019F098 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		A31F8B531F25FF490019F098 /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
+		A31F8B541F25FF800019F098 /* FallingObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallingObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 				41E9FCF31F21C5D400EECAA7 /* GameManager.swift */,
 				41E9FCFB1F21D30B00EECAA7 /* BallView.swift */,
 				41E9FCFD1F21D34300EECAA7 /* BucketView.swift */,
+				A31F8B541F25FF800019F098 /* FallingObject.swift */,
 			);
 			path = Bucky;
 			sourceTree = "<group>";
@@ -170,6 +175,8 @@
 				1CE4984D1F221CA3001B266B /* EndViewController.swift in Sources */,
 				1CA860431F21C6F100A21816 /* HomeViewController.swift in Sources */,
 				41E9FCFC1F21D30B00EECAA7 /* BallView.swift in Sources */,
+				A31F8B551F25FF800019F098 /* FallingObject.swift in Sources */,
+				22B87DB41F25C8E8000BD5A8 /* AnimationManager.swift in Sources */,
 				41E9FCFE1F21D34300EECAA7 /* BucketView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
