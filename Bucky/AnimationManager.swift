@@ -8,28 +8,39 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 class AnimationManager {
 
-    static func animateStart(score : UIButton, highscore : UIButton , lives : [UIImageView] ) {
+    var audioPlayer = AVAudioPlayer()
+
+    func animateStart(score : UILabel, highscore : UILabel , lives : [UIImageView] ) {
         UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: [], animations: {
             score.center.x -= 200
-            highscore.center.x += 200
+//            highscore.center.x += 200
             for life in lives {
                 life.center.y -= 200
             }
         }, completion: nil)
     }
 
-    static func animateScore(button : UIButton, score : Int){
-        button.setTitle("Score : \(score)", for: .normal)
+    func animateScore(label : UILabel, score : Int){
+
+//        let animation : CABasicAnimation = CABasicAnimation(keyPath: "transform.translation.x")
+//        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+//
+//        animation.repeatCount =  5
+//        animation.duration = (0.1)/TimeInterval(animation.repeatCount)
+//        animation.autoreverses = true
+//        animation.byValue =  -7
+//        label.layer.add(animation, forKey: "shake")
+
+//        UIView.animate(withDuration: 0.25, delay: 0, options: [.autoreverse], animations: {
+//            label.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+//        },completion: nil)
     }
 
-    static func animateHighScore(button : UIButton, score : Int){
-        button.setTitle("High Score : \(score)", for: .normal)
-    }
-
-    static func animateFoul(view : UIView, lives : [UIImageView], remainingLifeCount : Int) {
+    func animateFoul(view : UIView, lives : [UIImageView], remainingLifeCount : Int) {
         let redView = UIView(frame: CGRect(x: 0, y: 0, width: 420, height: 800))
         redView.alpha = 0.0
         redView.backgroundColor = .red
@@ -59,7 +70,7 @@ class AnimationManager {
         }
     }
 
-    static func animateEnd(clouds : [UIImageView]){
+    func animateEnd(clouds : [UIImageView]){
         UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.35, initialSpringVelocity: 0, options: [.curveEaseIn], animations: {
             clouds[0].center.x -= 150
             clouds[1].center.x += 170
