@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 
 protocol GameManagerProtocol {
-    func gameManagerDidGameStart(_ gameManager: GameManager, fallingObject: FallingObject)
-    func gameManagerDidSpawnNewFallingObject(_ gameManager: GameManager, fallingObject: FallingObject)
-    func gameManagerDidUpdateScore(_ gameManager: GameManager, newScore: Int)
-    func gameManagerDidUpdateLives(_ gameManager: GameManager, leftLives: Int)
-    func gameManagerRemoveFromSuperView(_ gameManager: GameManager, ball: FallingObject)
-    func gameManagerDidUpdateHighScore(_ gameManager: GameManager, highScore: Int)
-    func gameManagerDidEncounterGameOver(_ gameManager: GameManager)    
+    func gameManager(_ gameManager: GameManager,DidGameStart fallingObject: FallingObject)
+    func gameManager(_ gameManager: GameManager, DidSpawnNewFallingObject fallingObject: FallingObject)
+    func gameManager(_ gameManager: GameManager, DidUpdateCurrentScore NewScore: Int)
+    func gameManager(_ gameManager: GameManager, DidUpdateLives Lives: Int)
+    func gameManager(_ gameManager: GameManager, RemoveFromSuperView ball: FallingObject)
+    func gameManager(_ gameManager: GameManager, DidUpdateHighScore HighScore: Int)
+    func gameManagerDidEncounterGameOver(_ gameManager: GameManager)
 }
 
 class GameManager  {
@@ -29,29 +29,29 @@ class GameManager  {
     init(currentScore: Int, leftLives: Int){
         self.currentScore = currentScore
         self.leftLives = leftLives
-        self.highestScore = UserDefaults.standard.integer(forKey: "highestScore")
+        self.highestScore = UserDefaults.standard.integer(forKey: UserDefaultsKey.highestScore)
     }
     
     init() { }
     
     func gameStartOrReset() {
         GameManager(currentScore: 0, leftLives: 3)
+        let index = 0
+        var velocity = Double(arc4random_uniform(6) + 5 )
+        let fallingObject = FallingObject( objectType: FallingObjectType.ballBlue, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
+        delegate?.gameManager(self, DidGameStart: fallingObject)
         
-        var velocity = arc4random_uniform(6) + 5
-        let fallingObject  = FallingObject(objectType: FallingObjectType[Int(arc4random_uniform(3)].rawValue, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400) , y: 0, width: 20, height: 20))
-            delegate?.gameManagerDidGameStart(self, fallingObject: fallingObject)
-            
-            repeatBalls()
+        repeatFallingObjects()
     }
     
     @objc func spawnNewFallingObject() {
+        var velocity = Double(arc4random_uniform(6) + 5)
+        let fallingObject  = FallingObject(objectType: FallingObjectType.ballBlue, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
+        delegate?.gameManager(self, DidSpawnNewFallingObject: fallingObject)
         
-        var velocity = arc4random_uniform(6) + 5
-        let fallingObject  = FallingObject(objectType: FallingObjectType[Int(arc4random_uniform(3)].rawValue, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400) , y: 0, width: 20, height: 20))
-            delegate?.gameManagerDidSpawnNewFallingObject(self, fallingObject: fallingObject)
     }
     
-    func repeatBalls() {
+    func repeatFallingObjects() {
         var timer = Timer()
         let delay = 0.5
         
@@ -63,16 +63,16 @@ class GameManager  {
         if bucket.frame.intersects(ball.frame) {
             currentScore += ball.type.score
             
-            delegate?.gameManagerDidUpdateScore(self, newScore: currentScore)
-            delegate?.gameManagerRemoveFromSuperView(self, ball: ball)
+            delegate?.gameManager(self, DidUpdateCurrentScore: currentScore)
+            delegate?.gameManager(self, RemoveFromSuperView: ball)
         }else {
             leftLives -= 1
-            delegate?.gameManagerDidUpdateLives(self, leftLives: leftLives)
-            delegate?.gameManagerRemoveFromSuperView(self, ball: ball)
+            delegate?.gameManager(self, DidUpdateLives: leftLives)
+            delegate?.gameManager(self, RemoveFromSuperView: ball)
         }
         if currentScore > highestScore {
             highestScore = currentScore
-            delegate?.gameManagerDidUpdateHighScore(self, highScore: highestScore)
+            delegate?.gameManager(self, DidUpdateHighScore: highestScore)
         }
         if leftLives == 0 {
             delegate?.gameManagerDidEncounterGameOver(self)
