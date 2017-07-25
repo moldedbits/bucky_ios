@@ -10,11 +10,6 @@ import Foundation
 import UIKit
 import GameplayKit
 
-//velocity
-//tell gameViewcontroller
-//start falling
-//delegate did cross threshold
-
 protocol FallingObjectDelegate {
     func fallingObject(fallingObject: FallingObject, didCrossThresholdPoint point: CGFloat)
 }
@@ -59,6 +54,7 @@ class FallingObject: UIView {
         objectImageView.image = type.image
         addSubview(objectImageView)
     }
+    
     
     func startFalling() {
         let duration = maxVelocity / velocity
