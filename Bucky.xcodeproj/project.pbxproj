@@ -29,6 +29,11 @@
 		1CA860421F21C6F100A21816 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		1CE4984B1F221CA3001B266B /* EndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndViewController.swift; sourceTree = "<group>"; };
 		1CE4984C1F221CA3001B266B /* EndViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EndViewController.xib; sourceTree = "<group>"; };
+		22998C5C1F278C3C007F2E7C /* start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = start.mp3; sourceTree = "<group>"; };
+		22998C5D1F278C3C007F2E7C /* end.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = end.mp3; sourceTree = "<group>"; };
+		22998C5E1F278C3C007F2E7C /* foul.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = foul.mp3; sourceTree = "<group>"; };
+		22998C5F1F278C3C007F2E7C /* hit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hit.mp3; sourceTree = "<group>"; };
+		22998C601F278C3C007F2E7C /* spawn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spawn.mp3; sourceTree = "<group>"; };
 		22B87DB31F25C8E8000BD5A8 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		22C098391F260B310014E317 /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		22C0983A1F260B310014E317 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +58,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22998C5B1F278B7E007F2E7C /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				22998C5D1F278C3C007F2E7C /* end.mp3 */,
+				22998C5E1F278C3C007F2E7C /* foul.mp3 */,
+				22998C5F1F278C3C007F2E7C /* hit.mp3 */,
+				22998C601F278C3C007F2E7C /* spawn.mp3 */,
+				22998C5C1F278C3C007F2E7C /* start.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		22D73AB41F20F621009BF0C0 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +89,7 @@
 		22D73ABF1F20F621009BF0C0 /* Bucky */ = {
 			isa = PBXGroup;
 			children = (
+				22998C5B1F278B7E007F2E7C /* Sounds */,
 				1CE4984B1F221CA3001B266B /* EndViewController.swift */,
 				1CE4984C1F221CA3001B266B /* EndViewController.xib */,
 				22D73AC01F20F621009BF0C0 /* AppDelegate.swift */,

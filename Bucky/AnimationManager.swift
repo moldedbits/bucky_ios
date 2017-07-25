@@ -22,6 +22,7 @@ class AnimationManager {
                 life.center.y -= 200
             }
         }, completion: nil)
+        playSound(soundName: "start")
     }
 
     func animateScore(label : UILabel, score : Int){
@@ -75,4 +76,15 @@ class AnimationManager {
         }, completion: nil)
         //Game over banner
     }
+
+    func playSound(soundName : String){
+        guard let audioUrl = Bundle.main.url(forResource: soundName, withExtension: ".mp3") else {return}
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: audioUrl)
+                audioPlayer.play()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+
 }
