@@ -14,7 +14,7 @@ protocol GameManagerProtocol {
     func gameManagerDidSpawnNewFallingObject(_ gameManager: GameManager, fallingObject: FallingObject)
     func gameManagerDidUpdateScore(_ gameManager: GameManager, newScore: Int)
     func gameManagerDidUpdateLives(_ gameManager: GameManager, leftLives: Int)
-    func gameManagerRemoveFromSuperView(_ gameManager: GameManager, ball: BallView)
+    func gameManagerRemoveFromSuperView(_ gameManager: GameManager, ball: FallingObject)
     func gameManagerDidUpdateHighScore(_ gameManager: GameManager, highScore: Int)
     func gameManagerDidEncounterGameOver(_ gameManager: GameManager)    
 }
