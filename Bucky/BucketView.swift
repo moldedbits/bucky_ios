@@ -16,7 +16,7 @@ class BucketView: UIImageView {
         super.init(image: #imageLiteral(resourceName: "bucketImage"))
         
         self.numberOfBallInBucket = 0
-        self.frame = CGRect(x: 200, y: y - 200, width: 150, height: 200)
+        self.frame = CGRect(x: 120, y: y, width: 150, height: 200)
     }
     
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented"); }
