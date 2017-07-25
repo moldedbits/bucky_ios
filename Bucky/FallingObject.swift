@@ -63,7 +63,6 @@ class FallingObject: UIView {
         UIView.animate(withDuration: 1) {
             self.alpha = 1
         }
-        
         UIView.animate(withDuration: duration, delay: 1, options: UIViewAnimationOptions.curveLinear, animations: {
             self.transform = CGAffineTransform(translationX: 0, y: distanceToTravel)
         }) { _ in
