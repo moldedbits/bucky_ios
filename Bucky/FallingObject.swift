@@ -27,7 +27,12 @@ enum FallingObjectType: String {
     
     var score: Int {
         switch self {
-        case .ballBlue, .ballGreen, .ballRed: return 5
+        case .ballBlue :
+                    return 1
+        case .ballGreen:
+                    return 2
+        case .ballRed:
+                    return 5
         default: return 0
         }
     }
