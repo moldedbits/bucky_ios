@@ -9,6 +9,8 @@
 import UIKit
 
 class GameViewController: UIViewController {
+
+    let animations = AnimationManager()
     
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var life1: UIImageView!
@@ -22,13 +24,16 @@ class GameViewController: UIViewController {
     @IBOutlet weak var cactus1: UIImageView!
     @IBOutlet weak var cactus2: UIImageView!
     @IBOutlet weak var dock: UIImageView!
-    @IBOutlet weak var scoreButton: UIButton!
-    @IBOutlet weak var highScoreButton: UIButton!
+    @IBOutlet var highScoreLabel: UILabel!
+    @IBOutlet var scoreLabel: UILabel!
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        highScoreButton.layer.cornerRadius = 15
-        scoreButton.layer.cornerRadius = 15
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        highScoreLabel.layer.cornerRadius = 15
+        highScoreLabel.layer.masksToBounds = true
+        scoreLabel.layer.cornerRadius = 15
+        scoreLabel.layer.masksToBounds = true
 
         //Initial positions for elements
         startButton.alpha = 0
@@ -37,15 +42,20 @@ class GameViewController: UIViewController {
         cloud2.center.x -= view.bounds.width
         cloud3.center.x += view.bounds.width
         cloud4.center.x -= view.bounds.width
-        highScoreButton.center.x -= 200
-        scoreButton.center.x += 200
+//        highScoreLabel.center.x -= 200
+        scoreLabel.center.x += 200
         for imageView in [cactus2,cactus1,dock,life1,life2,life3] {
             imageView!.center.y += 200
         }
     }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      // Game did start..also make the score labels visible
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -74,10 +84,11 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func startButtonTapped(_ sender: Any) {
-        UIView.animate(withDuration: 1.0) {
+        UIView.animate(withDuration: 0.5) {
             self.startButton.alpha = 0.0
         }
-        AnimationManager.animateStart(score: scoreButton, highscore: highScoreButton, lives: [life1,life2,life3])
+        animations.animateStart(score: scoreLabel, highscore: highScoreLabel, lives: [life1,life2,life3])
+        animations.animateScore(label: highScoreLabel, score: 10)
     }
-    
+
 }
