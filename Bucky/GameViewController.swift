@@ -48,15 +48,6 @@ class GameViewController: UIViewController {
         }
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      // Game did start..also make the score labels visible
-    }
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -88,5 +79,4 @@ class GameViewController: UIViewController {
         }
         animations.animateStart(score: scoreLabel, highscore: highScoreLabel, lives: [life1,life2,life3])
     }
-
 }
