@@ -105,18 +105,18 @@
                         <color key="titleColor" red="0.5957025286509906" green="0.42167919983444824" blue="0.23412729004340699" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="life" translatesAutoresizingMaskIntoConstraints="NO" id="uOB-Kd-0F3">
-                    <rect key="frame" x="175" y="632" width="25" height="25"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="25" id="Tkx-nj-5Dd"/>
-                        <constraint firstAttribute="width" constant="25" id="VBc-i7-rEG"/>
-                    </constraints>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="life" translatesAutoresizingMaskIntoConstraints="NO" id="4Gf-1Z-b0o">
                     <rect key="frame" x="140" y="632" width="25" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="25" id="1Ro-rf-P3j"/>
                         <constraint firstAttribute="height" constant="25" id="cw1-Cu-Csj"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="life" translatesAutoresizingMaskIntoConstraints="NO" id="uOB-Kd-0F3">
+                    <rect key="frame" x="175" y="632" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="Tkx-nj-5Dd"/>
+                        <constraint firstAttribute="width" constant="25" id="VBc-i7-rEG"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="life" translatesAutoresizingMaskIntoConstraints="NO" id="STo-vS-87c">

@@ -29,7 +29,7 @@ class AnimationManager {
         button.setTitle("High Score : \(score)", for: .normal)
     }
 
-    static func animateFoul(view : UIView){
+    static func animateFoul(view : UIView, lives : [UIImageView], remainingLifeCount : Int) {
         let redView = UIView(frame: CGRect(x: 0, y: 0, width: 420, height: 800))
         redView.alpha = 0.0
         redView.backgroundColor = .red
@@ -43,6 +43,20 @@ class AnimationManager {
                 redView.alpha = 0.0
             })  
         }, completion: nil)
+
+        switch remainingLifeCount {
+        case 2:
+            lives[2].backgroundColor = UIColor.black
+            lives[2].alpha = 0.2
+        case 1:
+            lives[1].backgroundColor = UIColor.black
+            lives[1].alpha = 0.2
+        case 0:
+            lives[0].backgroundColor = UIColor.black
+            lives[0].alpha = 0.2
+        default:
+            print("error....lives out of range")
+        }
     }
 
     static func animateEnd(clouds : [UIImageView]){
@@ -52,5 +66,6 @@ class AnimationManager {
             clouds[2].center.x -= 150
             clouds[3].center.x += 150
         }, completion: nil)
+        //Game over banner
     }
 }

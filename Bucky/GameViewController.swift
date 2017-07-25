@@ -24,14 +24,9 @@ class GameViewController: UIViewController {
     @IBOutlet weak var dock: UIImageView!
     @IBOutlet weak var scoreButton: UIButton!
     @IBOutlet weak var highScoreButton: UIButton!
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         highScoreButton.layer.cornerRadius = 15
         scoreButton.layer.cornerRadius = 15
 
@@ -47,6 +42,10 @@ class GameViewController: UIViewController {
         for imageView in [cactus2,cactus1,dock,life1,life2,life3] {
             imageView!.center.y += 200
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -68,7 +67,7 @@ class GameViewController: UIViewController {
             self.dock.center.y -= 200
         }, completion: nil)
 
-        UIView.animate(withDuration: 1.0, delay: 0.3, options: [.curveEaseOut], animations: {
+        UIView.animate(withDuration: 0.6, delay: 0.2, options: [.curveEaseOut], animations: {
             self.cactus1.center.y -= 200
             self.cactus2.center.y -= 200
         }, completion: nil)
