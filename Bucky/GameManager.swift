@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 protocol GameManagerProtocol {
-    func gameManagerDidGameStart(_ gameManager: GameManager, bucket: BucketView, ball: BallView)
+    func gameManagerDidGameStart(_ gameManager: GameManager, fallingObject: FallingObject)
+    func gameManagerDidSpawnNewFallingObject(_ gameManager: GameManager, fallingObject: FallingObject)
     func gameManagerDidUpdateScore(_ gameManager: GameManager, newScore: Int)
-    func gameManagerIncrementBallInBucket(_ gameManager: GameManager, bucket: BucketView)
     func gameManagerDidUpdateLives(_ gameManager: GameManager, leftLives: Int)
     func gameManagerRemoveFromSuperView(_ gameManager: GameManager, ball: BallView)
     func gameManagerDidUpdateHighScore(_ gameManager: GameManager, highScore: Int)
@@ -34,22 +34,21 @@ class GameManager  {
     
     init() { }
     
-    func gameStartOrReset(view : UIView) {
-        UserDefaults.standard.set(0, forKey: "highestScore")
+    func gameStartOrReset() {
         GameManager(currentScore: 0, leftLives: 3)
         
-        let bucketView = BucketView(y: Int(view.frame.height) - 200)
-        
-        let ballView = BallView()
-        delegate?.gameManagerDidGameStart(self, bucket: bucketView, ball: ballView)
-        //FallingObject().startFalling(ball: ballView)
-        
-        repeatBalls()
+        var velocity = arc4random_uniform(6) + 5
+        let fallingObject  = FallingObject(objectType: FallingObjectType[Int(arc4random_uniform(3)].rawValue, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400) , y: 0, width: 20, height: 20))
+            delegate?.gameManagerDidGameStart(self, fallingObject: fallingObject)
+            
+            repeatBalls()
     }
     
     @objc func spawnNewFallingObject() {
-        let ballView = BallView()
-         //FallingObject().startFalling(ball: ballView)
+        
+        var velocity = arc4random_uniform(6) + 5
+        let fallingObject  = FallingObject(objectType: FallingObjectType[Int(arc4random_uniform(3)].rawValue, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400) , y: 0, width: 20, height: 20))
+            delegate?.gameManagerDidSpawnNewFallingObject(self, fallingObject: fallingObject)
     }
     
     func repeatBalls() {
@@ -58,13 +57,12 @@ class GameManager  {
         
         timer.invalidate()
         timer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(spawnNewFallingObject), userInfo: nil, repeats: true)
-        
     }
     
-    func checkBallIsFoulOrCatch(bucket: BucketView, ball : BallView) {
+    func checkBallIsFoulOrCatch(bucket: UIView, ball : FallingObject) {
         if bucket.frame.intersects(ball.frame) {
-            currentScore += ball.score
-            delegate?.gameManagerIncrementBallInBucket(self,bucket: bucket )
+            currentScore += ball.type.score
+            
             delegate?.gameManagerDidUpdateScore(self, newScore: currentScore)
             delegate?.gameManagerRemoveFromSuperView(self, ball: ball)
         }else {
