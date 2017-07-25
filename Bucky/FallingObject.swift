@@ -55,7 +55,6 @@ class FallingObject: UIView {
         addSubview(objectImageView)
     }
     
-    
     func startFalling() {
         let duration = maxVelocity / velocity
         let distanceToTravel = (threshHoldPoint) - frame.origin.y
