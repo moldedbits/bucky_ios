@@ -26,8 +26,6 @@ class HomeViewController: UIViewController {
     var highScore: Int = 0
     
     @IBAction func playGameButtonTapped(_ sender: UIButton) {
-        print("Tapped")
-        // check for end game view controller
         let endViewController = EndViewController()
         navigationController?.pushViewController(endViewController, animated: true)
     }
@@ -37,8 +35,5 @@ class HomeViewController: UIViewController {
         UIView.animate(withDuration: 0.7, delay: 0, options: [.autoreverse,.repeat,.allowUserInteraction],animations: {
         self.playGameButton.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         },completion: nil)
-        
-    
     }
-    
 }
