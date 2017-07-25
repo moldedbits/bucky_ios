@@ -10,50 +10,73 @@ import Foundation
 import UIKit
 import GameplayKit
 
-class FallingObject {
+//velocity
+//tell gameViewcontroller
+//start falling
+//delegate did cross threshold
+
+protocol FallingObjectDelegate {
+    func fallingObject(fallingObject: FallingObject, didCrossThresholdPoint point: CGFloat)
+}
+
+enum FallingObjectType: String {
     
-    var ballName : [String]  = ["Red", "Green", "Blue"]
-    let ballScore : [String: Int] = ["red" : 3, "green" : 2, "blue" : 1 ]
+    case none
+    case ballRed
+    case ballBlue
+    case ballGreen
     
-    let bucket = BucketView(frame: CGRect(x: 0, y: 100, width: 100, height: 100), numberOfBallCollected: 0)
-    
-    let gameManager = GameManager(currentScore: 0, leftLives: 3, highestScore: 0)
-    
-    let panGesture = UIPanGestureRecognizer(target: GameViewController(), action: #selector(dragged(_:)))
-    
-    @objc func createBall(){
-        ballName = (GKRandomSource.sharedRandom().arrayByShufflingObjects(in: ballName) as! [String])
-        let ball = BallView(ballType: ballName[0], score: self.ballScore[ballName[0]]!, frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        ball.animateBall()
+    var image: UIImage? {
+        return UIImage(named: rawValue)
     }
     
-    func repeatBalls() {
-        var timer = Timer()
-        let delay = 0.5
-        
-        timer.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(createBall), userInfo: nil, repeats: true)
-    }
-    
-    @objc func dragged(_ sender: UIPanGestureRecognizer) {
-        
-        switch sender.state {
-        case .changed:
-            bucket.frame.origin.x = sender.location(in :UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))).x
-        default:
-            break
+    var score: Int {
+        switch self {
+        case .ballBlue, .ballGreen, .ballRed: return 5
+        default: return 0
         }
     }
 }
 
-extension UIView {
+class FallingObject: UIView {
     
-    func animateBall() {
+    var delegate : FallingObjectDelegate?
+    var type = FallingObjectType.none
+    var threshHoldPoint: CGFloat = UIScreen.main.bounds.height
+    var velocity: Double = 0
+    var maxVelocity: Double = 20.0
+    
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
+    init(objectType: FallingObjectType, velocity: Double, frame: CGRect) {
+        self.type = objectType
+        self.velocity = velocity
+        
+        super.init(frame: frame)
+        
+        let objectImageView = UIImageView(frame: bounds)
+        objectImageView.contentMode = .scaleAspectFit
+        objectImageView.image = type.image
+        addSubview(objectImageView)
+    }
+    
+    func startFalling() {
+        let duration = maxVelocity / velocity
+        let distanceToTravel = (threshHoldPoint) - frame.origin.y
+        alpha = 0
+        
         UIView.animate(withDuration: 1) {
-            self.frame.origin.y = 3000
-            if self.frame.origin.y + self.frame.height == FallingObject().bucket.frame.origin.y {
-                FallingObject().gameManager.checkBallIsFoulOrCatch(bucket: FallingObject().bucket, ball: self as! BallView)
-            }
+            self.alpha = 1
+        }
+        
+        UIView.animate(withDuration: duration, delay: 1, options: UIViewAnimationOptions.curveLinear, animations: {
+            self.transform = CGAffineTransform(translationX: 0, y: distanceToTravel)
+        }) { _ in
+            self.delegate?.fallingObject(fallingObject: self, didCrossThresholdPoint: self.threshHoldPoint)
         }
     }
 }
+    
+
+
+
