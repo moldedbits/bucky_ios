@@ -16,6 +16,7 @@
 		22860C4C1F2880F40057960D /* hit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22998C5F1F278C3C007F2E7C /* hit.mp3 */; };
 		22860C4D1F2880F40057960D /* spawn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22998C601F278C3C007F2E7C /* spawn.mp3 */; };
 		22860C4E1F2880F40057960D /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22998C5C1F278C3C007F2E7C /* start.mp3 */; };
+		22860C501F28A2780057960D /* SoundEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22860C4F1F28A2780057960D /* SoundEnum.swift */; };
 		22C0983B1F260B9A0014E317 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C0983A1F260B310014E317 /* GameViewController.swift */; };
 		22C0983C1F260BA20014E317 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22C098391F260B310014E317 /* GameViewController.xib */; };
 		22D73AC11F20F621009BF0C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D73AC01F20F621009BF0C0 /* AppDelegate.swift */; };
@@ -32,6 +33,7 @@
 		1CA860421F21C6F100A21816 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		1CE4984B1F221CA3001B266B /* EndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndViewController.swift; sourceTree = "<group>"; };
 		1CE4984C1F221CA3001B266B /* EndViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EndViewController.xib; sourceTree = "<group>"; };
+		22860C4F1F28A2780057960D /* SoundEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEnum.swift; sourceTree = "<group>"; };
 		22998C5C1F278C3C007F2E7C /* start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = start.mp3; sourceTree = "<group>"; };
 		22998C5D1F278C3C007F2E7C /* end.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = end.mp3; sourceTree = "<group>"; };
 		22998C5E1F278C3C007F2E7C /* foul.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = foul.mp3; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				22D73AC01F20F621009BF0C0 /* AppDelegate.swift */,
 				1CA860411F21C6F100A21816 /* HomeViewController.swift */,
 				1CA860421F21C6F100A21816 /* HomeViewController.xib */,
+				22860C4F1F28A2780057960D /* SoundEnum.swift */,
 				22B87DB31F25C8E8000BD5A8 /* AnimationManager.swift */,
 				22C0983A1F260B310014E317 /* GameViewController.swift */,
 				22C098391F260B310014E317 /* GameViewController.xib */,
@@ -194,6 +197,7 @@
 				22D73AC11F20F621009BF0C0 /* AppDelegate.swift in Sources */,
 				4184FB381F2781020050508E /* UserDefaultsKey.swift in Sources */,
 				4184FB391F278F590050508E /* AnimationManager.swift in Sources */,
+				22860C501F28A2780057960D /* SoundEnum.swift in Sources */,
 				1CE4984D1F221CA3001B266B /* EndViewController.swift in Sources */,
 				1CA860431F21C6F100A21816 /* HomeViewController.swift in Sources */,
 				A31F8B551F25FF800019F098 /* FallingObject.swift in Sources */,
