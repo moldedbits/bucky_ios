@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -160,7 +161,6 @@
                 <constraint firstAttribute="bottom" secondItem="ZZb-Vf-DNL" secondAttribute="bottom" constant="8" id="Wid-8p-Ym1"/>
                 <constraint firstAttribute="bottom" secondItem="uOB-Kd-0F3" secondAttribute="bottom" constant="10" id="WoL-qI-p3N"/>
                 <constraint firstItem="dDe-D7-ks6" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="XAI-TD-tPq"/>
-                <constraint firstAttribute="bottom" secondItem="uOB-Kd-0F3" secondAttribute="bottom" constant="10" id="bMl-le-3dn"/>
                 <constraint firstAttribute="trailing" secondItem="TDy-ZB-T1N" secondAttribute="trailing" constant="62" id="cgF-H2-D1T"/>
                 <constraint firstAttribute="bottom" secondItem="dDe-D7-ks6" secondAttribute="bottom" constant="-5" id="dqS-8f-fVO"/>
                 <constraint firstItem="Hws-h6-wam" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-60" id="g1o-fR-Z8J"/>
