@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "filename" : "bg-sunny@2x.png"
+      "idiom" : "universal"
     },
     {
       "idiom" : "universal",
+      "filename" : "bg-sunny@2x.png",
       "scale" : "1x"
     },
     {
