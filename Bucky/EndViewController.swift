@@ -33,8 +33,4 @@ class EndViewController: UIViewController {
         let homeViewController = HomeViewController()
         navigationController?.pushViewController(homeViewController, animated: true)
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 }
