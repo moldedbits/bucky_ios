@@ -20,19 +20,30 @@ enum FallingObjectType: String {
     case ballRed
     case ballBlue
     case ballGreen
+    case ballYellow
+    case ballCyan
+    case ballGrey
+    case ballPurple
     
     var image: UIImage? {
         return UIImage(named: rawValue)
     }
     
+    func random() -> FallingObjectType {
+        var ballType = ["ballRed","ballBlue","ballGreen","BallYellow","ballCyan","ballGrey","ballPurple"]
+        ballType = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: ballType) as! [String]
+        return FallingObjectType(rawValue: ballType[0]) ?? FallingObjectType(rawValue: "ballRed")!
+    }
+    
     var score: Int {
         switch self {
-        case .ballBlue :
-                    return 1
-        case .ballGreen:
-                    return 2
-        case .ballRed:
-                    return 5
+        case .ballRed : return 7
+        case .ballBlue : return 6
+        case .ballGreen : return 5
+        case .ballYellow : return 4
+        case .ballCyan : return 3
+        case .ballGrey : return 2
+        case .ballPurple : return 1
         default: return 0
         }
     }
@@ -75,7 +86,3 @@ class FallingObject: UIView {
         }
     }
 }
-    
-
-
-
