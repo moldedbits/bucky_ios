@@ -26,8 +26,8 @@ class HomeViewController: UIViewController {
     var highScore: Int = 0
     
     @IBAction func playGameButtonTapped(_ sender: UIButton) {
-        let endViewController = EndViewController()
-        navigationController?.pushViewController(endViewController, animated: true)
+        let gameViewController = GameViewController()
+        navigationController?.pushViewController(gameViewController, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -8,12 +8,21 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Heavy</string>
+        </array>
+        <array key="Chalkduster.ttf">
+            <string>Chalkduster</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EndViewController" customModule="Bucky" customModuleProvider="target">
             <connections>
                 <outlet property="currentScoreLabel" destination="Y2p-WD-4yh" id="0nW-zA-Xkz"/>
                 <outlet property="highScoreLabel" destination="tWo-zd-eMe" id="Jo4-1A-rYm"/>
-                <outlet property="homePageButton" destination="MfJ-Ay-GMp" id="OvC-Ew-SiL"/>
+                <outlet property="homePageButton" destination="MfJ-Ay-GMp" id="AHU-wA-Zvp"/>
+                <outlet property="replayButton" destination="bdA-0E-WSw" id="Jkg-Py-c2p"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,58 +31,106 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-sunny" translatesAutoresizingMaskIntoConstraints="NO" id="7S3-zi-brw">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="7S3-zi-brw">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="0.61352204623287676" colorSpace="calibratedRGB"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfJ-Ay-GMp">
-                    <rect key="frame" x="87" y="314" width="200" height="40"/>
-                    <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="0.80332298801369861" colorSpace="calibratedRGB"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MfJ-Ay-GMp">
+                    <rect key="frame" x="87" y="502" width="200" height="40"/>
+                    <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="0E8-t7-7va"/>
                         <constraint firstAttribute="width" constant="200" id="cVi-da-0VZ"/>
                     </constraints>
-                    <state key="normal" title="Home Page"/>
+                    <state key="normal">
+                        <attributedString key="attributedTitle">
+                            <fragment content="Home Page">
+                                <attributes>
+                                    <font key="NSFont" size="18" name="Chalkduster"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </state>
                     <connections>
                         <action selector="homePageButtonTapped:" destination="-1" eventType="touchUpInside" id="QYG-iu-5nn"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2p-WD-4yh">
-                    <rect key="frame" x="30" y="143" width="150" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="150" id="cEF-pJ-Zlq"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2p-WD-4yh">
+                    <rect key="frame" x="143" y="158.5" width="89" height="38"/>
+                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
+                    <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWo-zd-eMe">
-                    <rect key="frame" x="195" y="143" width="150" height="21"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bdA-0E-WSw">
+                    <rect key="frame" x="87" y="422" width="200" height="40"/>
+                    <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="150" id="Kmf-fx-gEq"/>
+                        <constraint firstAttribute="width" constant="200" id="Btj-S2-gLa"/>
+                        <constraint firstAttribute="height" constant="40" id="ewi-X2-2iu"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                    <state key="normal">
+                        <attributedString key="attributedTitle">
+                            <fragment content="Replay">
+                                <attributes>
+                                    <font key="NSFont" size="18" name="Chalkduster"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </state>
+                    <connections>
+                        <action selector="replayButtonTapped:" destination="-1" eventType="touchUpInside" id="YoR-nX-4uS"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axi-Bq-W0s">
+                    <rect key="frame" x="59" y="-30" width="256" height="51"/>
+                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="40"/>
+                    <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Score" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voQ-OY-Ei2">
+                    <rect key="frame" x="123.5" y="121" width="129.5" height="27.5"/>
+                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                    <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwj-ln-r1u">
+                    <rect key="frame" x="136.5" y="246.5" width="102.5" height="27.5"/>
+                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                    <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWo-zd-eMe">
+                    <rect key="frame" x="143" y="284" width="89" height="38"/>
+                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
+                    <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="7S3-zi-brw" firstAttribute="centerX" secondItem="MfJ-Ay-GMp" secondAttribute="centerX" id="2qA-iZ-nrI"/>
-                <constraint firstItem="7S3-zi-brw" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="8WB-gR-rzW"/>
-                <constraint firstItem="7S3-zi-brw" firstAttribute="centerY" secondItem="MfJ-Ay-GMp" secondAttribute="centerY" id="TVJ-8Y-4Bo"/>
-                <constraint firstItem="7S3-zi-brw" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="cut-zw-EH8"/>
-                <constraint firstItem="MfJ-Ay-GMp" firstAttribute="top" secondItem="Y2p-WD-4yh" secondAttribute="bottom" constant="150" id="d5Z-wm-fcS"/>
-                <constraint firstItem="MfJ-Ay-GMp" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="eni-3x-IHF"/>
-                <constraint firstItem="MfJ-Ay-GMp" firstAttribute="top" secondItem="tWo-zd-eMe" secondAttribute="bottom" constant="150" id="fIC-xB-heg"/>
-                <constraint firstItem="Y2p-WD-4yh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="lWr-ly-WRY"/>
-                <constraint firstAttribute="trailing" secondItem="tWo-zd-eMe" secondAttribute="trailing" constant="30" id="pGa-Bb-wY7"/>
+                <constraint firstItem="Y2p-WD-4yh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1tR-Ax-fcA"/>
+                <constraint firstItem="Y2p-WD-4yh" firstAttribute="top" secondItem="voQ-OY-Ei2" secondAttribute="bottom" constant="10" id="6fb-jq-wBp"/>
+                <constraint firstItem="MfJ-Ay-GMp" firstAttribute="top" secondItem="bdA-0E-WSw" secondAttribute="bottom" constant="40" id="7cl-Dl-P5c"/>
+                <constraint firstAttribute="bottom" secondItem="7S3-zi-brw" secondAttribute="bottom" id="8mM-le-EMT"/>
+                <constraint firstItem="7S3-zi-brw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="AFu-dT-JXT"/>
+                <constraint firstItem="7S3-zi-brw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IN9-E5-Hkn"/>
+                <constraint firstItem="voQ-OY-Ei2" firstAttribute="top" secondItem="axi-Bq-W0s" secondAttribute="bottom" constant="100" id="Jdu-gO-9rG"/>
+                <constraint firstItem="tWo-zd-eMe" firstAttribute="top" secondItem="nwj-ln-r1u" secondAttribute="bottom" constant="10" id="JjF-mi-gaB"/>
+                <constraint firstItem="nwj-ln-r1u" firstAttribute="top" secondItem="Y2p-WD-4yh" secondAttribute="bottom" constant="50" id="La8-kd-7Sq"/>
+                <constraint firstItem="nwj-ln-r1u" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="PKo-FA-B4n"/>
+                <constraint firstItem="bdA-0E-WSw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QPi-GX-UVg"/>
+                <constraint firstItem="bdA-0E-WSw" firstAttribute="top" secondItem="tWo-zd-eMe" secondAttribute="bottom" constant="100" id="RaG-9w-zDZ"/>
+                <constraint firstAttribute="trailing" secondItem="7S3-zi-brw" secondAttribute="trailing" id="cEU-PF-stK"/>
+                <constraint firstAttribute="bottom" secondItem="MfJ-Ay-GMp" secondAttribute="bottom" constant="125" id="e2a-xc-y6d"/>
+                <constraint firstItem="axi-Bq-W0s" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jvy-ky-9Zj"/>
+                <constraint firstItem="voQ-OY-Ei2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="mP0-gF-QZm"/>
+                <constraint firstItem="tWo-zd-eMe" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="rlr-Qh-qfe"/>
                 <constraint firstItem="MfJ-Ay-GMp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="uH5-co-l2j"/>
             </constraints>
             <point key="canvasLocation" x="34.5" y="53.5"/>
         </view>
     </objects>
     <resources>
-        <image name="bg-sunny" width="213" height="378"/>
+        <image name="background" width="750" height="1333"/>
     </resources>
 </document>
