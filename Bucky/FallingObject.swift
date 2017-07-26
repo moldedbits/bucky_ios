@@ -53,6 +53,11 @@ class FallingObject: UIView {
     
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
+    init() {
+        super.init(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        
+    }
+    
     init(objectType: FallingObjectType, velocity: Double, frame: CGRect) {
         self.type = objectType
         self.velocity = velocity
