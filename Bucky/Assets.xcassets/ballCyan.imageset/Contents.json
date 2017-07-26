@@ -1,15 +1,14 @@
 {
   "images" : [
     {
-      "idiom" : "universal"
       "idiom" : "universal",
-      "filename" : "bg-sunny@2x.png"
-      "idiom" : "universal",
-      "filename" : "bg-sunny@2x.png",
+      "filename" : "ballCyan.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "ballCyan@2x.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",

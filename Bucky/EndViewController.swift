@@ -12,12 +12,17 @@ class EndViewController: UIViewController {
 
     @IBOutlet weak var currentScoreLabel: UILabel! {
         didSet {
-            currentScoreLabel.text = "Current Score \(currentScore)"
+            currentScoreLabel.text = "\(currentScore)"
         }
     }
     @IBOutlet weak var highScoreLabel: UILabel! {
         didSet {
-            highScoreLabel.text = "High Score \(highScore)"
+            highScoreLabel.text = "\(highScore)"
+        }
+    }
+    @IBOutlet weak var replayButton: UIButton! {
+        didSet {
+            replayButton.layer.cornerRadius = 20
         }
     }
     @IBOutlet weak var homePageButton: UIButton! {
@@ -29,12 +34,11 @@ class EndViewController: UIViewController {
     var currentScore: Int = 0
     var highScore: Int = 0
     
-    @IBAction func homePageButtonTapped(_ sender: Any) {
-        let homeViewController = HomeViewController()
-        navigationController?.pushViewController(homeViewController, animated: true)
+    @IBAction func replayButtonTapped(_ sender: Any) {
+        navigationController?.pushViewController(GameViewController(), animated: true)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBAction func homePageButtonTapped(_ sender: Any) {
+     navigationController?.pushViewController(HomeViewController(), animated: true)
     }
 }
