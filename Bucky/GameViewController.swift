@@ -11,7 +11,7 @@ import UIKit
 class GameViewController: UIViewController {
 
     let animations = AnimationManager()
-    
+
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var life1: UIImageView!
     @IBOutlet weak var life2: UIImageView!
@@ -26,6 +26,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var dock: UIImageView!
     @IBOutlet var highScoreLabel: UILabel!
     @IBOutlet var scoreLabel: UILabel!
+
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,38 +49,47 @@ class GameViewController: UIViewController {
         }
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Game did start..also make the score labels visible
+    }
+
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        viewWillAppear(animated)
 
         UIView.animate(withDuration: 2.0, delay: 0, options: [.curveEaseOut], animations: {
             self.backgroundImage.alpha = 1.0
-        })
+        }, completion: nil)
 
         UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.35, initialSpringVelocity: 8.0, options: [.curveEaseOut,], animations: {
             self.cloud1.center.x -= self.view.bounds.width
             self.cloud2.center.x += self.view.bounds.width
             self.cloud3.center.x -= self.view.bounds.width
             self.cloud4.center.x += self.view.bounds.width
-        })
+        }, completion: nil)
 
         UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
             self.startButton.alpha = 1.0
             self.dock.center.y -= 200
-        })
+        }, completion: nil)
 
         UIView.animate(withDuration: 0.6, delay: 0.2, options: [.curveEaseOut], animations: {
             self.cactus1.center.y -= 200
             self.cactus2.center.y -= 200
-        })
+        }, completion: nil)
     }
 
     @IBAction func startButtonTapped(_ sender: Any) {
         UIView.animate(withDuration: 0.5) {
-//            self.startButton.alpha = 0.0
+            self.startButton.alpha = 0.0
         }
-        animations.animateFoul(view: view, lives: [life1,life2,life3], remainingLifeCount: 2)
-//        animations.animateScore(label: highScoreLabel, score: 10)
-//        animations.animateEnd(clouds: [cloud1,cloud2,cloud3,cloud4], view: view)
         animations.animateStart(score: scoreLabel, highscore: highScoreLabel, lives: [life1,life2,life3])
+        animations.animateScore(label: highScoreLabel, score: 10)
     }
+
 }
+
