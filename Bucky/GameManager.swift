@@ -34,10 +34,20 @@ class GameManager {
     
     init() { }
     
+    func createFallingObjectType()-> FallingObjectType {
+        var fallingObjectType: FallingObjectType
+        if  fallingObjectType = FallingObjectType.random() {
+            
+        } else {
+            fallingObjectType = FallingObjectType.ballGreen
+        }
+        return fallingObjectType
+    }
+    
     func gameStart() {
         highestScore = UserDefaults.standard.integer(forKey: UserDefaultsKey.highestScore)
         let velocity = Double(arc4random_uniform(6) + 5 )
-        let fallingObject = FallingObject( objectType: FallingObjectType.random(), velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
+        let fallingObject = FallingObject( objectType: createFallingObjectType(), velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
         delegate?.gameManager(self, didGameStart: fallingObject)
         
         repeatFallingObjects()
@@ -59,7 +69,7 @@ class GameManager {
     
     @objc func spawnNewFallingObject() {
         let velocity = Double(arc4random_uniform(6) + 5)
-        let fallingObject  = FallingObject(objectType: FallingObjectType.random(), velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
+        let fallingObject  = FallingObject(objectType: createFallingObjectType(), velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
         delegate?.gameManager(self, didSpawnNewFallingObject: fallingObject)
     }
     
