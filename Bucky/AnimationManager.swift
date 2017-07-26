@@ -14,28 +14,29 @@ class AnimationManager {
 
     var audioPlayer = AVAudioPlayer()
 
-    func animateStart(score : UILabel, highscore : UILabel , lives : [UIImageView] ) {
+    func animateStart(score: UILabel, highscore: UILabel, lives: [UIImageView], bucket: UIImageView) {
         UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: [], animations: {
+            bucket.center.x += 400
             score.center.x -= 200
             highscore.center.x += 200
             for life in lives {
                 life.center.y -= 200
             }
-        }, completion: nil)
-        playSound(soundName: "start")
+        })
+        playSound(soundName: SoundName.start.rawValue )
     }
 
-    func animateScore(label : UILabel, score : Int){
+    func animateScore(label: UILabel, score: Int) {
         label.text = "\(score)"
         animateWithKeyframes(duration: 0.4, frame1: {
             label.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         }) {
             label.transform = CGAffineTransform(scaleX: 0.834, y: 0.834)
         }
-        playSound(soundName: "hit")
+        playSound(soundName: SoundName.hit.rawValue)
     }
 
-    func animateFoul(view : UIView, lives : [UIImageView], remainingLifeCount : Int) {
+    func animateFoul(view: UIView, lives: [UIImageView], remainingLifeCount: Int) {
         let redView = createView(color: .red)
         view.addSubview(redView)
         animateWithKeyframes(duration: 0.5, frame1: {
@@ -50,10 +51,10 @@ class AnimationManager {
         default:
             print("ERROR : Remaining lives out of range")
         }
-        playSound(soundName: "foul")
+        playSound(soundName: SoundName.foul.rawValue)
     }
 
-    func animateEnd(clouds : [UIImageView], view : UIView){
+    func animateEnd(clouds: [UIImageView], view: UIView) {
         let gameOverBanner = UIImageView(image: #imageLiteral(resourceName: "GameOver"))
         gameOverBanner.frame = CGRect(x: 0, y: 0, width: 10, height: 5)
         gameOverBanner.center = view.center
@@ -67,11 +68,11 @@ class AnimationManager {
             clouds[3].center.x += 150
             dimView.alpha = 0.4
             gameOverBanner.transform = gameOverBanner.transform.scaledBy(x: 25, y: 25)
-        }, completion: nil)
-        playSound(soundName: "end")
+        })
+        playSound(soundName: SoundName.end.rawValue)
     }
 
-    private func playSound(soundName : String){
+    private func playSound(soundName: String){
         guard let audioUrl = Bundle.main.url(forResource: soundName, withExtension: "mp3")
             else { return }
         do {
@@ -83,14 +84,14 @@ class AnimationManager {
         }
     }
 
-    private func createView(color : UIColor, alpha : Double = 0.0) -> UIView {
+    private func createView(color: UIColor, alpha: Double = 0.0) -> UIView {
         let newView = UIView(frame: CGRect(x: 0, y: 0, width: 414, height: 736))
         newView.alpha = 0.0
         newView.backgroundColor = color
         return newView
     }
 
-    private func animateWithKeyframes(duration : Double, frame1 : @escaping ()->Void,frame2 : @escaping ()->Void){
+    private func animateWithKeyframes(duration: Double, frame1: @escaping ()->Void, frame2: @escaping ()->Void) {
         UIView.animateKeyframes(withDuration: duration, delay: 0.0, options: [], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: duration/2, animations: {
                 frame1()
@@ -98,8 +99,6 @@ class AnimationManager {
             UIView.addKeyframe(withRelativeStartTime: duration/2, relativeDuration: duration/2, animations: {
                 frame2()
             })
-        }, completion: nil)
-
+        })
     }
-
 }
