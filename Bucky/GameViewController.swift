@@ -11,7 +11,7 @@ import UIKit
 class GameViewController: UIViewController {
 
     let animations = AnimationManager()
-    
+
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var life1: UIImageView!
     @IBOutlet weak var life2: UIImageView!
@@ -26,6 +26,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var dock: UIImageView!
     @IBOutlet var highScoreLabel: UILabel!
     @IBOutlet var scoreLabel: UILabel!
+    @IBOutlet weak var bucket: UIImageView!
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -43,13 +44,22 @@ class GameViewController: UIViewController {
         cloud4.center.x -= view.bounds.width
         highScoreLabel.center.x -= 200
         scoreLabel.center.x += 200
-        for imageView in [cactus2,cactus1,dock,life1,life2,life3] {
+        bucket.center.x -= 400
+        for imageView in [cactus2, cactus1, dock, life1, life2, life3] {
             imageView!.center.y += 200
         }
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        bucket.isUserInteractionEnabled = true
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(dragged(_:)))
+        bucket.addGestureRecognizer(panGesture)
+    }
+
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        viewWillAppear(animated)
 
         UIView.animate(withDuration: 2.0, delay: 0, options: [.curveEaseOut], animations: {
             self.backgroundImage.alpha = 1.0
@@ -77,9 +87,30 @@ class GameViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.startButton.alpha = 0.0
         }
-//        animations.animateFoul(view: view, lives: [life1,life2,life3], remainingLifeCount: 2)
+        addViewsToDock()
+        animations.animateStart(score: scoreLabel, highscore: highScoreLabel, lives: [life1,life2,life3], bucket: bucket)
 //        animations.animateScore(label: highScoreLabel, score: 10)
-//        animations.animateEnd(clouds: [cloud1,cloud2,cloud3,cloud4], view: view)
-        animations.animateStart(score: scoreLabel, highscore: highScoreLabel, lives: [life1,life2,life3])
     }
+
+    func addViewsToDock(){
+        dock.addSubview(life1)
+        dock.addSubview(life2)
+        dock.addSubview(life3)
+        dock.addSubview(highScoreLabel)
+        dock.addSubview(scoreLabel)
+        view.bringSubview(toFront: dock)
+    }
+
+    @objc func dragged(_ sender: UIPanGestureRecognizer){
+        switch sender.state {
+        case .changed:
+            UIView.animate(withDuration: 0.03, animations: {
+                self.bucket.center.x = sender.location(in: self.view).x
+            })
+        default:
+            return
+        }
+    }
+
 }
+
