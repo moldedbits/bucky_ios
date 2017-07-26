@@ -26,65 +26,77 @@ class AnimationManager {
     }
 
     func animateScore(label : UILabel, score : Int){
-        UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: [], animations: {
-            label.text = "\(score)"
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.2, animations: {
-                label.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-            })
-            UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.2, animations: {
-                label.transform = CGAffineTransform(scaleX: 0.834, y: 0.834)
-            })
-        }, completion: nil)
-    }
-
-    func animateFoul(view : UIView, lives : [UIImageView], remainingLifeCount : Int) {
-        let redView = UIView(frame: CGRect(x: 0, y: 0, width: 420, height: 800))
-        redView.alpha = 0.0
-        redView.backgroundColor = .red
-        view.addSubview(redView)
-
-        UIView.animateKeyframes(withDuration: 0.6, delay: 0, options: [], animations: {
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.30, animations: {
-                redView.alpha = 0.6
-            })
-            UIView.addKeyframe(withRelativeStartTime: 0.30, relativeDuration: 0.30, animations: {
-                redView.alpha = 0.0
-            })  
-        }, completion: nil)
-
-        switch remainingLifeCount {
-        case 2:
-            lives[2].backgroundColor = UIColor.black
-            lives[2].alpha = 0.2
-        case 1:
-            lives[1].backgroundColor = UIColor.black
-            lives[1].alpha = 0.2
-        case 0:
-            lives[0].backgroundColor = UIColor.black
-            lives[0].alpha = 0.2
-        default:
-            print("error....lives out of range")
+        label.text = "\(score)"
+        animateWithKeyframes(duration: 0.4, frame1: {
+            label.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        }) {
+            label.transform = CGAffineTransform(scaleX: 0.834, y: 0.834)
         }
     }
 
-    func animateEnd(clouds : [UIImageView]){
-        UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.35, initialSpringVelocity: 0, options: [.curveEaseIn], animations: {
+    func animateFoul(view : UIView, lives : [UIImageView], remainingLifeCount : Int) {
+        let redView = createView(color: .red)
+        view.addSubview(redView)
+        animateWithKeyframes(duration: 0.5, frame1: {
+                redView.alpha = 0.6
+        }) {
+                   redView.alpha = 0.0
+        }
+        switch remainingLifeCount {
+        case 0...2:
+            lives[remainingLifeCount].backgroundColor = UIColor.black
+            lives[remainingLifeCount].alpha = 0.2
+        default:
+            print("ERROR : Remaining lives out of range")
+        }
+    }
+
+    func animateEnd(clouds : [UIImageView], view : UIView){
+        let gameOverBanner = UIImageView(image: #imageLiteral(resourceName: "GameOver"))
+        gameOverBanner.frame = CGRect(x: 0, y: 0, width: 10, height: 5)
+        gameOverBanner.center = view.center
+        let dimView = createView(color: .black)
+        view.addSubview(dimView)
+        view.addSubview(gameOverBanner)
+        UIView.animate(withDuration: 2.0, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5.0, options: [], animations: {
             clouds[0].center.x -= 150
             clouds[1].center.x += 170
             clouds[2].center.x -= 150
             clouds[3].center.x += 150
+            dimView.alpha = 0.4
+            gameOverBanner.transform = gameOverBanner.transform.scaledBy(x: 25, y: 25)
         }, completion: nil)
-        //Game over banner
     }
 
-    func playSound(soundName : String){
-        guard let audioUrl = Bundle.main.url(forResource: soundName, withExtension: ".mp3") else {return}
+    private func playSound(soundName : String){
+        guard let audioUrl = Bundle.main.url(forResource: "start", withExtension: "mp3")
+            else { return }
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: audioUrl)
+                audioPlayer.prepareToPlay()
                 audioPlayer.play()
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+
+    private func createView(color : UIColor, alpha : Double = 0.0) -> UIView {
+        let newView = UIView(frame: CGRect(x: 0, y: 0, width: 414, height: 736))
+        newView.alpha = 0.0
+        newView.backgroundColor = color
+        return newView
+    }
+
+    private func animateWithKeyframes(duration : Double, frame1 : @escaping ()->Void,frame2 : @escaping ()->Void){
+        UIView.animateKeyframes(withDuration: duration, delay: 0.0, options: [], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: duration/2, animations: {
+                frame1()
+            })
+            UIView.addKeyframe(withRelativeStartTime: duration/2, relativeDuration: duration/2, animations: {
+                frame2()
+            })
+        }, completion: nil)
+
     }
 
 }
