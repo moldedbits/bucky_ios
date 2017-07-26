@@ -12,10 +12,10 @@ import AVFoundation
 
 class AnimationManager {
 
-    var audioPlayer = AVAudioPlayer()
+    private var audioPlayer = AVAudioPlayer()
 
     func animateStart(score: UILabel, highscore: UILabel, lives: [UIImageView], bucket: UIImageView) {
-        UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: [], animations: {
+        UIView.animate(withDuration: 1.5, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: [], animations: {
             bucket.center.x += 400
             score.center.x -= 200
             highscore.center.x += 200
@@ -54,7 +54,9 @@ class AnimationManager {
         playSound(soundName: SoundName.foul.rawValue)
     }
 
-    func animateEnd(clouds: [UIImageView], view: UIView) {
+    func animateEnd(clouds: [UIImageView], view: UIView, life: UIImageView) {
+        life.backgroundColor = UIColor.black
+        life.alpha = 0.2
         let gameOverBanner = UIImageView(image: #imageLiteral(resourceName: "GameOver"))
         gameOverBanner.frame = CGRect(x: 0, y: 0, width: 10, height: 5)
         gameOverBanner.center = view.center

@@ -25,7 +25,6 @@
                 <outlet property="life2" destination="uOB-Kd-0F3" id="MuI-Vn-qN2"/>
                 <outlet property="life3" destination="STo-vS-87c" id="ESC-6e-iHh"/>
                 <outlet property="scoreLabel" destination="ZZb-Vf-DNL" id="pGl-AU-FZb"/>
-                <outlet property="startButton" destination="7AE-UA-RDc" id="dze-di-5Ih"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -107,17 +106,6 @@
                         <constraint firstAttribute="width" constant="25" id="rW6-XZ-bP3"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7AE-UA-RDc">
-                    <rect key="frame" x="112" y="258" width="150" height="150"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="150" id="jMg-Pa-hsI"/>
-                        <constraint firstAttribute="height" constant="150" id="om7-UN-tBv"/>
-                    </constraints>
-                    <state key="normal" title="Button" image="start"/>
-                    <connections>
-                        <action selector="startButtonTapped:" destination="-1" eventType="touchUpInside" id="Ebt-RI-ZBG"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZb-Vf-DNL">
                     <rect key="frame" x="260" y="629" width="100" height="30"/>
                     <color key="backgroundColor" red="0.17028188705444336" green="0.086136661469936371" blue="0.063992120325565338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -140,7 +128,7 @@
                     <color key="textColor" red="0.53286647799999998" green="0.3818837404" blue="0.20973891019999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Bucket" translatesAutoresizingMaskIntoConstraints="NO" id="HoR-jK-G7W">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bucket" translatesAutoresizingMaskIntoConstraints="NO" id="HoR-jK-G7W">
                     <rect key="frame" x="162.5" y="581" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="BLt-UK-zIv"/>
@@ -150,11 +138,9 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="7AE-UA-RDc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1li-BM-g9J"/>
                 <constraint firstAttribute="trailing" secondItem="zjI-oQ-Zkl" secondAttribute="trailing" id="5mZ-mE-Y2r"/>
                 <constraint firstAttribute="bottom" secondItem="STo-vS-87c" secondAttribute="bottom" constant="10" id="687-6U-6UN"/>
                 <constraint firstItem="zjI-oQ-Zkl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9Lt-QM-G6c"/>
-                <constraint firstItem="7AE-UA-RDc" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Boi-8T-4EG"/>
                 <constraint firstItem="YlB-ou-5MK" firstAttribute="top" secondItem="TDy-ZB-T1N" secondAttribute="bottom" constant="150" id="Fbc-Pt-dF0"/>
                 <constraint firstAttribute="bottom" secondItem="zjI-oQ-Zkl" secondAttribute="bottom" id="FtV-1G-iGb"/>
                 <constraint firstItem="ktw-Wl-p9V" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="G8X-Xv-CZp"/>
@@ -169,6 +155,7 @@
                 <constraint firstAttribute="bottom" secondItem="ZZb-Vf-DNL" secondAttribute="bottom" constant="8" id="Wid-8p-Ym1"/>
                 <constraint firstAttribute="bottom" secondItem="uOB-Kd-0F3" secondAttribute="bottom" constant="10" id="WoL-qI-p3N"/>
                 <constraint firstItem="dDe-D7-ks6" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="XAI-TD-tPq"/>
+                <constraint firstItem="HoR-jK-G7W" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Yd2-Jh-g7g"/>
                 <constraint firstAttribute="bottom" secondItem="HoR-jK-G7W" secondAttribute="bottom" constant="36" id="cBj-6S-yFZ"/>
                 <constraint firstAttribute="trailing" secondItem="TDy-ZB-T1N" secondAttribute="trailing" constant="62" id="cgF-H2-D1T"/>
                 <constraint firstAttribute="bottom" secondItem="dDe-D7-ks6" secondAttribute="bottom" constant="-5" id="dqS-8f-fVO"/>
@@ -197,6 +184,5 @@
         <image name="cacti1" width="268" height="182"/>
         <image name="cacti3" width="424" height="180"/>
         <image name="life" width="800" height="800"/>
-        <image name="start" width="2125" height="2125"/>
     </resources>
 </document>
