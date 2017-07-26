@@ -38,6 +38,7 @@ class GameManager {
         var fallingObjectType: FallingObjectType
         guard fallingObjectType = FallingObjectType.random() else {
             fallingObjectType = FallingObjectType.ballGreen
+            return fallingObjectType
         }
         
         return fallingObjectType
