@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "play_kaushal (1).png",
+      "filename" : "ballGreen.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "ballGreen@2x.png",
       "scale" : "2x"
     },
     {
