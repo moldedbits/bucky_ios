@@ -29,16 +29,8 @@ enum FallingObjectType: String {
         return UIImage(named: rawValue)
     }
     
-    func random() -> FallingObjectType? {
-        var ballTypes = ["ballRed", "ballBlue", "ballGreen", "ballYellow", "ballCyan", "ballGrey", "ballPurple"]
-        ballTypes = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: ballTypes) as! [String]
-        
-        return FallingObjectType(rawValue: ballTypes[0])
-    }
-    
     var score: Int {
         switch self {
-
         case .ballRed : return 7
         case .ballBlue : return 6
         case .ballGreen : return 5
@@ -86,5 +78,12 @@ class FallingObject: UIView {
         }) { _ in
             self.delegate?.fallingObject(fallingObject: self, didCrossThresholdPoint: self.threshHoldPoint)
         }
+    }
+    
+    func random() -> FallingObjectType? {
+        var ballTypes = ["ballRed", "ballBlue", "ballGreen", "ballYellow", "ballCyan", "ballGrey", "ballPurple"]
+        ballTypes = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: ballTypes) as! [String]
+    
+        return FallingObjectType(rawValue: ballTypes[0])
     }
 }
