@@ -11,4 +11,5 @@ import Foundation
 struct UserDefaultsKey {
     
     static let highestScore: String = "HighestScore"
+    static let currentScore: String = "CurrentScore"
 }

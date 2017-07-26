@@ -26,28 +26,11 @@ class GameManager {
     var highestScore: Int = UserDefaults.standard.integer(forKey: UserDefaultsKey.highestScore)
     var delegate: GameManagerProtocol?
     
-    init(currentScore: Int, leftLives: Int){
-        self.currentScore = currentScore
-        self.leftLives = leftLives
-        self.highestScore = UserDefaults.standard.integer(forKey: UserDefaultsKey.highestScore)
-    }
-    
-    init() { }
-    
-    func createFallingObjectType()-> FallingObjectType {
-        var fallingObjectType: FallingObjectType
-        guard fallingObjectType = FallingObjectType.random() else {
-            fallingObjectType = FallingObjectType.ballGreen
-            return fallingObjectType
-        }
-        
-        return fallingObjectType
-    }
-    
     func gameStart() {
         highestScore = UserDefaults.standard.integer(forKey: UserDefaultsKey.highestScore)
         let velocity = Double(arc4random_uniform(6) + 5 )
-        let fallingObject = FallingObject( objectType: createFallingObjectType(), velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
+        let fallingObject = FallingObject( objectType: FallingObject().random()
+            ?? FallingObjectType.ballGreen, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
         delegate?.gameManager(self, didGameStart: fallingObject)
         
         repeatFallingObjects()
@@ -69,14 +52,16 @@ class GameManager {
     
     @objc func spawnNewFallingObject() {
         let velocity = Double(arc4random_uniform(6) + 5)
-        let fallingObject  = FallingObject(objectType: createFallingObjectType(), velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
+        let fallingObject  = FallingObject(objectType: FallingObject().random()
+            ?? FallingObjectType.ballGreen, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
         delegate?.gameManager(self, didSpawnNewFallingObject: fallingObject)
     }
     
-    func checkBallIsFoulOrCatch(bucket: UIView, ball : FallingObject) {
+    func checkBallIsFoulOrCatch(bucket: UIImageView, ball : FallingObject) {
+        let range = Int(bucket.frame.width/2) - 10
         let midXOfBucket = Int(bucket.frame.midX)
         let midXOfFallingObject = Int(ball.frame.midX)
-        if midXOfFallingObject - 10 <= midXOfBucket && midXOfBucket <= midXOfFallingObject + 10 {
+        if midXOfFallingObject - range <= midXOfBucket && midXOfBucket <= midXOfFallingObject + range {
             currentScore += ball.type.score
             delegate?.gameManager(self, didUpdateCurrentScore: currentScore)
             delegate?.gameManager(self, didRemoveFromSuperView: ball)
@@ -91,6 +76,7 @@ class GameManager {
             delegate?.gameManager(self, didUpdateHighScore: highestScore)
         }
         if leftLives <= 0 {
+            UserDefaults.standard.set(currentScore, forKey: UserDefaultsKey.currentScore)
             delegate?.gameManagerDidEncounterGameOver(self)
         }
     }
