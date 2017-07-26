@@ -33,15 +33,15 @@ class GameManager {
             ?? FallingObjectType.ballGreen, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
         delegate?.gameManager(self, didGameStart: fallingObject)
         
-        repeatFallingObjects()
+        repeatFallingObjects(flag: true)
     }
     
-    func repeatFallingObjects() {
+    func repeatFallingObjects(flag: Bool) {
         var timer = Timer()
-        let delay = 0.5
+        let delay = 2.0
         
         timer.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(spawnNewFallingObject), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(spawnNewFallingObject), userInfo: nil, repeats: flag)
     }
     
     func gameReset() {
@@ -50,8 +50,8 @@ class GameManager {
         gameStart()
     }
     
-    @objc func spawnNewFallingObject() {
-        let velocity = Double(arc4random_uniform(6) + 5)
+    @objc func spawnNewFallingObject(flag: Bool) {
+        let velocity = Double(arc4random_uniform(3) + 1)
         let fallingObject  = FallingObject(objectType: FallingObject().random()
             ?? FallingObjectType.ballGreen, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
         delegate?.gameManager(self, didSpawnNewFallingObject: fallingObject)
@@ -76,6 +76,7 @@ class GameManager {
             delegate?.gameManager(self, didUpdateHighScore: highestScore)
         }
         if leftLives <= 0 {
+            repeatFallingObjects(flag: false)
             UserDefaults.standard.set(currentScore, forKey: UserDefaultsKey.currentScore)
             delegate?.gameManagerDidEncounterGameOver(self)
         }
