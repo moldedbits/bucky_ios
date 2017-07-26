@@ -32,6 +32,7 @@ class AnimationManager {
         }) {
             label.transform = CGAffineTransform(scaleX: 0.834, y: 0.834)
         }
+        playSound(soundName: "hit")
     }
 
     func animateFoul(view : UIView, lives : [UIImageView], remainingLifeCount : Int) {
@@ -49,6 +50,7 @@ class AnimationManager {
         default:
             print("ERROR : Remaining lives out of range")
         }
+        playSound(soundName: "foul")
     }
 
     func animateEnd(clouds : [UIImageView], view : UIView){
@@ -66,10 +68,11 @@ class AnimationManager {
             dimView.alpha = 0.4
             gameOverBanner.transform = gameOverBanner.transform.scaledBy(x: 25, y: 25)
         }, completion: nil)
+        playSound(soundName: "end")
     }
 
     private func playSound(soundName : String){
-        guard let audioUrl = Bundle.main.url(forResource: "start", withExtension: "mp3")
+        guard let audioUrl = Bundle.main.url(forResource: soundName, withExtension: "mp3")
             else { return }
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: audioUrl)

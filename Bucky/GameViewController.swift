@@ -75,11 +75,11 @@ class GameViewController: UIViewController {
 
     @IBAction func startButtonTapped(_ sender: Any) {
         UIView.animate(withDuration: 0.5) {
-//            self.startButton.alpha = 0.0
+            self.startButton.alpha = 0.0
         }
-        animations.animateFoul(view: view, lives: [life1,life2,life3], remainingLifeCount: 2)
-        animations.animateScore(label: highScoreLabel, score: 10)
+//        animations.animateFoul(view: view, lives: [life1,life2,life3], remainingLifeCount: 2)
+//        animations.animateScore(label: highScoreLabel, score: 10)
 //        animations.animateEnd(clouds: [cloud1,cloud2,cloud3,cloud4], view: view)
-//        animations.animateStart(score: scoreLabel, highscore: highScoreLabel, lives: [life1,life2,life3])
+        animations.animateStart(score: scoreLabel, highscore: highScoreLabel, lives: [life1,life2,life3])
     }
 }
