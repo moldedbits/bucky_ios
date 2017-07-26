@@ -50,6 +50,14 @@ class GameViewController: UIViewController {
         }
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        bucket.isUserInteractionEnabled = true
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(dragged(_:)))
+        bucket.addGestureRecognizer(panGesture)
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         viewWillAppear(animated)
 
@@ -91,6 +99,17 @@ class GameViewController: UIViewController {
         dock.addSubview(highScoreLabel)
         dock.addSubview(scoreLabel)
         view.bringSubview(toFront: dock)
+    }
+
+    @objc func dragged(_ sender: UIPanGestureRecognizer){
+        switch sender.state {
+        case .changed:
+            UIView.animate(withDuration: 0.03, animations: {
+                self.bucket.center.x = sender.location(in: self.view).x
+            })
+        default:
+            return
+        }
     }
 
 }
