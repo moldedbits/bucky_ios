@@ -8,11 +8,11 @@
 
 import UIKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDelegate {
 
+    let gameManager = GameManager()
     let animations = AnimationManager()
 
-    @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var life1: UIImageView!
     @IBOutlet weak var life2: UIImageView!
     @IBOutlet weak var life3: UIImageView!
@@ -30,13 +30,13 @@ class GameViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        bucket.isUserInteractionEnabled = true
         highScoreLabel.layer.cornerRadius = 15
         highScoreLabel.layer.masksToBounds = true
         scoreLabel.layer.cornerRadius = 15
         scoreLabel.layer.masksToBounds = true
 
         //Initial positions for elements
-        startButton.alpha = 0
         backgroundImage.alpha = 0
         cloud1.center.x += view.bounds.width
         cloud2.center.x -= view.bounds.width
@@ -52,10 +52,11 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        bucket.isUserInteractionEnabled = true
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(dragged(_:)))
         bucket.addGestureRecognizer(panGesture)
+
+        gameManager.delegate = self
+        gameManager.gameStart()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -73,7 +74,6 @@ class GameViewController: UIViewController {
         }, completion: nil)
 
         UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
-            self.startButton.alpha = 1.0
             self.dock.center.y -= 200
         }, completion: nil)
 
@@ -81,15 +81,8 @@ class GameViewController: UIViewController {
             self.cactus1.center.y -= 200
             self.cactus2.center.y -= 200
         }, completion: nil)
-    }
 
-    @IBAction func startButtonTapped(_ sender: Any) {
-        UIView.animate(withDuration: 0.5) {
-            self.startButton.alpha = 0.0
-        }
-        addViewsToDock()
         animations.animateStart(score: scoreLabel, highscore: highScoreLabel, lives: [life1,life2,life3], bucket: bucket)
-//        animations.animateScore(label: highScoreLabel, score: 10)
     }
 
     func addViewsToDock(){
@@ -110,6 +103,46 @@ class GameViewController: UIViewController {
         default:
             return
         }
+    }
+
+    func fallingObject(fallingObject: FallingObject, didCrossThresholdPoint point: CGFloat) {
+        gameManager.checkBallIsFoulOrCatch(bucket: bucket, ball: fallingObject)
+        fallingObject.removeFromSuperview()
+    }
+
+    func gameManager(_ gameManager: GameManager, didGameStart fallingObject: FallingObject) {
+        fallingObject.delegate = self
+        self.gameManager(gameManager, didSpawnNewFallingObject: fallingObject)
+        let highScore = UserDefaults.standard.integer(forKey: UserDefaultsKey.highestScore)
+        animations.animateScore(label: highScoreLabel, score: highScore)
+        animations.animateScore(label: scoreLabel, score: 0)
+    }
+
+    func gameManager(_ gameManager: GameManager, didSpawnNewFallingObject fallingObject: FallingObject) {
+        fallingObject.delegate = self
+        view.addSubview(fallingObject)
+        fallingObject.startFalling()
+    }
+
+    func gameManager(_ gameManager: GameManager, didUpdateCurrentScore newScore: Int) {
+        animations.animateScore(label: scoreLabel, score: newScore)
+    }
+
+    func gameManager(_ gameManager: GameManager, didUpdateLives lives: Int) {
+        animations.animateFoul(view: view, lives: [life1,life2,life3], remainingLifeCount: lives)
+    }
+
+    func gameManager(_ gameManager: GameManager, didRemoveFromSuperView ball: FallingObject) {
+        ball.removeFromSuperview()
+    }
+
+    func gameManager(_ gameManager: GameManager, didUpdateHighScore highScore: Int) {
+        animations.animateScore(label: highScoreLabel, score: highScore)
+    }
+
+    func gameManagerDidEncounterGameOver(_ gameManager: GameManager) {
+        animations.animateEnd(clouds: [cloud1,cloud2,cloud3,cloud4], view: view, life: life1)
+        //        navigationController?.pushViewController(EndViewController(), animated: true)
     }
 
 }
