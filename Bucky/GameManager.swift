@@ -36,11 +36,10 @@ class GameManager {
     
     func createFallingObjectType()-> FallingObjectType {
         var fallingObjectType: FallingObjectType
-        if  fallingObjectType = FallingObjectType.random() {
-            
-        } else {
+        guard fallingObjectType = FallingObjectType.random() else {
             fallingObjectType = FallingObjectType.ballGreen
         }
+        
         return fallingObjectType
     }
     
