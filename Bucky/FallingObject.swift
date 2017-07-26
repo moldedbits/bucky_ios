@@ -30,7 +30,7 @@ enum FallingObjectType: String {
     }
     
     func random() -> FallingObjectType? {
-        var ballTypes = ["ballRed","ballBlue","ballGreen","ballYellow","ballCyan","ballGrey","ballPurple"]
+        var ballTypes = ["ballRed", "ballBlue", "ballGreen", "ballYellow", "ballCyan", "ballGrey", "ballPurple"]
         ballTypes = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: ballTypes) as! [String]
         
         return FallingObjectType(rawValue: ballTypes[0])
