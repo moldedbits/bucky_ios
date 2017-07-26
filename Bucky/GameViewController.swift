@@ -44,18 +44,9 @@ class GameViewController: UIViewController {
         cloud4.center.x -= view.bounds.width
         highScoreLabel.center.x -= 200
         scoreLabel.center.x += 200
-        for imageView in [cactus2,cactus1,dock,life1,life2,life3] {
+        for imageView in [cactus2, cactus1, dock, life1, life2, life3] {
             imageView!.center.y += 200
         }
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Game did start..also make the score labels visible
     }
 
     override func viewDidAppear(_ animated: Bool) {
