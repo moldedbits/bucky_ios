@@ -14,8 +14,9 @@ class AnimationManager {
 
     var audioPlayer = AVAudioPlayer()
 
-    func animateStart(score: UILabel, highscore: UILabel, lives: [UIImageView]) {
+    func animateStart(score: UILabel, highscore: UILabel, lives: [UIImageView], bucket: UIImageView) {
         UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: [], animations: {
+            bucket.center.x += 400
             score.center.x -= 200
             highscore.center.x += 200
             for life in lives {

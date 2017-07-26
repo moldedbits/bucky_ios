@@ -26,7 +26,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var dock: UIImageView!
     @IBOutlet var highScoreLabel: UILabel!
     @IBOutlet var scoreLabel: UILabel!
-
+    @IBOutlet weak var bucket: UIImageView!
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,6 +44,7 @@ class GameViewController: UIViewController {
         cloud4.center.x -= view.bounds.width
         highScoreLabel.center.x -= 200
         scoreLabel.center.x += 200
+        bucket.center.x -= 400
         for imageView in [cactus2, cactus1, dock, life1, life2, life3] {
             imageView!.center.y += 200
         }
@@ -78,8 +79,18 @@ class GameViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.startButton.alpha = 0.0
         }
-        animations.animateStart(score: scoreLabel, highscore: highScoreLabel, lives: [life1,life2,life3])
-        animations.animateScore(label: highScoreLabel, score: 10)
+        addViewsToDock()
+        animations.animateStart(score: scoreLabel, highscore: highScoreLabel, lives: [life1,life2,life3], bucket: bucket)
+//        animations.animateScore(label: highScoreLabel, score: 10)
+    }
+
+    func addViewsToDock(){
+        dock.addSubview(life1)
+        dock.addSubview(life2)
+        dock.addSubview(life3)
+        dock.addSubview(highScoreLabel)
+        dock.addSubview(scoreLabel)
+        view.bringSubview(toFront: dock)
     }
 
 }
