@@ -120,6 +120,7 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
 
     func gameManager(_ gameManager: GameManager, didSpawnNewFallingObject fallingObject: FallingObject) {
         fallingObject.delegate = self
+        fallingObject.threshHoldPoint = bucket.frame.minY
         view.addSubview(fallingObject)
         fallingObject.startFalling()
     }
