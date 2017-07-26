@@ -31,16 +31,14 @@ class EndViewController: UIViewController {
         }
     }
     
-    var currentScore: Int = 2000
-    var highScore: Int = 2000
+    var currentScore: Int = 0
+    var highScore: Int = 0
     
     @IBAction func replayButtonTapped(_ sender: Any) {
-        let gameViewController = GameViewController()
-        navigationController?.pushViewController(gameViewController, animated: true)
+        navigationController?.pushViewController(GameViewController(), animated: true)
     }
     
     @IBAction func homePageButtonTapped(_ sender: Any) {
-        let homeViewController = HomeViewController()
-        navigationController?.pushViewController(homeViewController, animated: true)
+     navigationController?.pushViewController(HomeViewController(), animated: true)
     }
 }
