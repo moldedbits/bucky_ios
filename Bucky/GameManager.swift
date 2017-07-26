@@ -39,10 +39,9 @@ class GameManager {
     func repeatFallingObjects(flag: Bool) {
         var timer = Timer()
         let delay = 2.0
-        
-        timer.invalidate()
         timer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(spawnNewFallingObject), userInfo: nil, repeats: flag)
-    }
+        timer.invalidate()
+       }
     
     func gameReset() {
         currentScore = 0
