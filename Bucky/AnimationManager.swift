@@ -69,6 +69,12 @@ class AnimationManager {
         playSound(soundName: SoundName.end.rawValue)
     }
 
+    func delay(_ seconds: Double, completion: @escaping ()->Void) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(Int(seconds * 1000.0))) {
+            completion()
+        }
+    }
+
     private func playSound(soundName: String){
         guard let audioUrl = Bundle.main.url(forResource: soundName, withExtension: "mp3")
             else { return }

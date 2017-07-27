@@ -143,6 +143,9 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
 
     func gameManagerDidEncounterGameOver(_ gameManager: GameManager) {
         animations.animateEnd(clouds: [cloud1,cloud2,cloud3,cloud4], view: view, life: life1)
+        animations.delay(3.0) {
+            self.navigationController?.pushViewController(EndViewController(), animated: true)
+        }
         //        navigationController?.pushViewController(EndViewController(), animated: true)
     }
 
