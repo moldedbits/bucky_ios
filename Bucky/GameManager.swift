@@ -21,32 +21,28 @@ protocol GameManagerProtocol {
 
 class GameManager {
     
+    var timer = Timer()
     var currentScore:Int = 0
     var leftLives :Int = 3
     var highestScore: Int = UserDefaults.standard.integer(forKey: UserDefaultsKey.highestScore)
     var delegate: GameManagerProtocol?
+    var isGameOver = false
     
     func gameStart() {
+        currentScore = 0
+        leftLives = 3
         highestScore = UserDefaults.standard.integer(forKey: UserDefaultsKey.highestScore)
         let velocity = Double(arc4random_uniform(6) + 5 )
         let fallingObject = FallingObject( objectType: FallingObject().random()
             ?? FallingObjectType.ballGreen, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
         delegate?.gameManager(self, didGameStart: fallingObject)
         
-        repeatFallingObjects(flag: true)
+        repeatFallingObjects()
     }
     
-    func repeatFallingObjects(flag: Bool) {
-        var timer = Timer()
+    func repeatFallingObjects() {
         let delay = 2.0
-        timer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(spawnNewFallingObject), userInfo: nil, repeats: flag)
-        timer.invalidate()
-       }
-    
-    func gameReset() {
-        currentScore = 0
-        leftLives = 3
-        gameStart()
+        timer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(spawnNewFallingObject), userInfo: nil, repeats: true)
     }
     
     @objc func spawnNewFallingObject(flag: Bool) {
@@ -56,7 +52,7 @@ class GameManager {
         delegate?.gameManager(self, didSpawnNewFallingObject: fallingObject)
     }
     
-    func checkBallIsFoulOrCatch(bucket: UIImageView, ball : FallingObject) {
+    func checkBallIsFoulOrCatch(bucket: UIImageView, ball: FallingObject) {
         let range = Int(bucket.frame.width/2) - 10
         let midXOfBucket = Int(bucket.frame.midX)
         let midXOfFallingObject = Int(ball.frame.midX)
@@ -75,9 +71,12 @@ class GameManager {
             delegate?.gameManager(self, didUpdateHighScore: highestScore)
         }
         if leftLives <= 0 {
-            repeatFallingObjects(flag: false)
-            UserDefaults.standard.set(currentScore, forKey: UserDefaultsKey.currentScore)
-            delegate?.gameManagerDidEncounterGameOver(self)
+            timer.invalidate()
+            if !isGameOver {
+                UserDefaults.standard.set(currentScore, forKey: UserDefaultsKey.currentScore)
+                delegate?.gameManagerDidEncounterGameOver(self)
+            }
+            isGameOver = true
         }
     }
 }
