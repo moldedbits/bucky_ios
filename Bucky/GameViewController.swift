@@ -113,12 +113,6 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
         if !gameManager.isGameOver {
             gameManager.checkBallIsFoulOrCatch(bucket: bucket, ball: fallingObject)
         }
-        fallingObject.removeFromSuperview()
-    }
-
-    func gameManager(_ gameManager: GameManager, didGameStart fallingObject: FallingObject) {
-        fallingObject.delegate = self
-        self.gameManager(gameManager, didSpawnNewFallingObject: fallingObject)
     }
 
     func gameManager(_ gameManager: GameManager, didSpawnNewFallingObject fallingObject: FallingObject) {
@@ -136,9 +130,9 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
         animations.animateFoul(view: view, lives: [life1,life2,life3], remainingLifeCount: lives)
     }
 
-    func gameManager(_ gameManager: GameManager, didRemoveFromSuperView ball: FallingObject) {
+    func gameManager(_ gameManager: GameManager, didRemoveFromSuperView ball: FallingObject, isFoul: Bool) {
         ball.removeFromSuperview()
-    }
+        }
 
     func gameManager(_ gameManager: GameManager, didUpdateHighScore highScore: Int) {
         animations.animateScore(label: highScoreLabel, score: highScore)
