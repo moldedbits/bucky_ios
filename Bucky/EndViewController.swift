@@ -32,19 +32,19 @@ class EndViewController: UIViewController {
     }
     
     var currentScore: Int {
-        guard let currentScore = UserDefaults.standard.value(forKey: UserDefaultsKey.currentScore) as? Int else {return 0}
+        guard let currentScore = UserDefaults.standard.value(forKey: UserDefaultsKey.currentScore) as? Int else { return 0 }
         return currentScore
     }
     var highScore: Int {
-        guard let highScore = UserDefaults.standard.value(forKey: UserDefaultsKey.highestScore) as? Int else {return 0}
+        guard let highScore = UserDefaults.standard.value(forKey: UserDefaultsKey.highestScore) as? Int else { return 0 }
         return highScore
     }
     
     @IBAction func replayButtonTapped(_ sender: Any) {
-        navigationController?.pushViewController(GameViewController(), animated: true)
+        navigationController?.viewControllers = [GameViewController()]
     }
     
     @IBAction func homePageButtonTapped(_ sender: Any) {
-     navigationController?.pushViewController(HomeViewController(), animated: true)
+        navigationController?.viewControllers = [HomeViewController()]
     }
 }
