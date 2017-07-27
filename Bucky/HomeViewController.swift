@@ -32,6 +32,7 @@ class HomeViewController: UIViewController {
         navigationController?.pushViewController(GameViewController(), animated: true)
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 0.7, delay: 0, options: [.autoreverse,.repeat,.allowUserInteraction],animations: {

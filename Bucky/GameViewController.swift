@@ -106,7 +106,9 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
     }
     //Delegation Methods
     func fallingObject(fallingObject: FallingObject, didCrossThresholdPoint point: CGFloat) {
+        if !gameManager.isGameOver {
         gameManager.checkBallIsFoulOrCatch(bucket: bucket, ball: fallingObject)
+        }
         fallingObject.removeFromSuperview()
     }
 
