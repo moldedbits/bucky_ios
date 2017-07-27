@@ -94,9 +94,9 @@ class AnimationManager {
         return newView
     }
 
-    private func animateKeyframes(duration : Double, frames: [()->Void]){
+    private func animateKeyframes(duration : Double, frames: [()->Void]) {
         UIView.animateKeyframes(withDuration: duration, delay: 0, options: [], animations: {
-            for (index,frame) in frames.enumerated(){
+            for (index,frame) in frames.enumerated() {
                 UIView.addKeyframe(withRelativeStartTime: 0 + Double(index)*(duration/Double(frames.count)), relativeDuration: duration/Double(frames.count), animations: {
                     frame()
                 })
