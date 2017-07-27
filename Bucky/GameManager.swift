@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 protocol GameManagerProtocol {
-    func gameManager(_ gameManager: GameManager, didGameStart fallingObject: FallingObject)
     func gameManager(_ gameManager: GameManager, didSpawnNewFallingObject fallingObject: FallingObject)
     func gameManager(_ gameManager: GameManager, didUpdateCurrentScore newScore: Int)
     func gameManager(_ gameManager: GameManager, didUpdateLives lives: Int)
