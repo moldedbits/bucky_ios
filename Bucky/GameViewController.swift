@@ -27,29 +27,8 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
     @IBOutlet var highScoreLabel: UILabel!
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet weak var bucket: UIImageView!
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        bucket.isUserInteractionEnabled = true
-        highScoreLabel.layer.cornerRadius = 15
-        highScoreLabel.layer.masksToBounds = true
-        scoreLabel.layer.cornerRadius = 15
-        scoreLabel.layer.masksToBounds = true
-
-        //Initial positions for elements
-        backgroundImage.alpha = 0
-        cloud1.center.x += view.bounds.width
-        cloud2.center.x -= view.bounds.width
-        cloud3.center.x += view.bounds.width
-        cloud4.center.x -= view.bounds.width
-        highScoreLabel.center.x -= 200
-        scoreLabel.center.x += 200
-        bucket.center.x -= 400
-        for imageView in [cactus2, cactus1, dock, life1, life2, life3] {
-            imageView!.center.y += 200
-        }
-    }
-
+    @IBOutlet weak var bucketXConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(dragged(_:)))
@@ -60,8 +39,8 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        viewWillAppear(animated)
-
+        super.viewDidAppear(animated)
+        setInitialConfig()
         UIView.animate(withDuration: 2.0, delay: 0, options: [.curveEaseOut], animations: {
             self.backgroundImage.alpha = 1.0
         }, completion: nil)
@@ -85,6 +64,26 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
         animations.animateStart(score: scoreLabel, highscore: highScoreLabel, lives: [life1,life2,life3], bucket: bucket)
     }
 
+    func setInitialConfig(){
+        bucket.isUserInteractionEnabled = true
+        highScoreLabel.layer.cornerRadius = 15
+        highScoreLabel.layer.masksToBounds = true
+        scoreLabel.layer.cornerRadius = 15
+        scoreLabel.layer.masksToBounds = true
+        //Initial positions for elements
+        backgroundImage.alpha = 0
+        cloud1.center.x += view.bounds.width
+        cloud2.center.x -= view.bounds.width
+        cloud3.center.x += view.bounds.width
+        cloud4.center.x -= view.bounds.width
+        highScoreLabel.center.x -= 200
+        scoreLabel.center.x += 200
+        bucket.center.x -= 400
+        for imageView in [cactus2, cactus1, dock, life1, life2, life3] {
+            imageView!.center.y += 200
+        }
+    }
+
     func addViewsToDock(){
         dock.addSubview(life1)
         dock.addSubview(life2)
@@ -97,14 +96,15 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
     @objc func dragged(_ sender: UIPanGestureRecognizer){
         switch sender.state {
         case .changed:
-            UIView.animate(withDuration: 0.03, animations: {
+            UIView.animate(withDuration: 0.05, animations: {
                 self.bucket.center.x = sender.location(in: self.view).x
+                self.bucketXConstraint.constant = sender.location(in: self.view).x - self.bucket.frame.width/2
             })
         default:
             return
         }
     }
-
+    //Delegation Methods
     func fallingObject(fallingObject: FallingObject, didCrossThresholdPoint point: CGFloat) {
         gameManager.checkBallIsFoulOrCatch(bucket: bucket, ball: fallingObject)
         fallingObject.removeFromSuperview()
@@ -143,6 +143,9 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
 
     func gameManagerDidEncounterGameOver(_ gameManager: GameManager) {
         animations.animateEnd(clouds: [cloud1,cloud2,cloud3,cloud4], view: view, life: life1)
+        animations.delay(3.0) {
+            self.navigationController?.pushViewController(EndViewController(), animated: true)
+        }
         //        navigationController?.pushViewController(EndViewController(), animated: true)
     }
 

@@ -31,8 +31,14 @@ class EndViewController: UIViewController {
         }
     }
     
-    var currentScore: Int = 0
-    var highScore: Int = 0
+    var currentScore: Int {
+        guard let currentScore = UserDefaults.standard.value(forKey: UserDefaultsKey.currentScore) as? Int else {return 0}
+        return currentScore
+    }
+    var highScore: Int {
+        guard let highScore = UserDefaults.standard.value(forKey: UserDefaultsKey.highestScore) as? Int else {return 0}
+        return highScore
+    }
     
     @IBAction func replayButtonTapped(_ sender: Any) {
         navigationController?.pushViewController(GameViewController(), animated: true)

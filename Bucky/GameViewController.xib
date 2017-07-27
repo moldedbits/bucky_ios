@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="backgroundImage" destination="zjI-oQ-Zkl" id="RPh-iN-Pau"/>
                 <outlet property="bucket" destination="HoR-jK-G7W" id="bhH-i1-uDf"/>
+                <outlet property="bucketXConstraint" destination="eCo-dL-f7f" id="MnW-OV-vbf"/>
                 <outlet property="cactus1" destination="Hws-h6-wam" id="PTg-9i-o5r"/>
                 <outlet property="cactus2" destination="VXn-j8-HIH" id="jbR-jy-YQS"/>
                 <outlet property="cloud1" destination="j6a-Fs-Uy8" id="f5h-4M-ycs"/>
@@ -35,7 +36,6 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="zjI-oQ-Zkl">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-sunny-cloud-1" translatesAutoresizingMaskIntoConstraints="NO" id="YlB-ou-5MK">
                     <rect key="frame" x="230" y="376" width="180" height="61"/>
@@ -155,10 +155,10 @@
                 <constraint firstAttribute="bottom" secondItem="ZZb-Vf-DNL" secondAttribute="bottom" constant="8" id="Wid-8p-Ym1"/>
                 <constraint firstAttribute="bottom" secondItem="uOB-Kd-0F3" secondAttribute="bottom" constant="10" id="WoL-qI-p3N"/>
                 <constraint firstItem="dDe-D7-ks6" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="XAI-TD-tPq"/>
-                <constraint firstItem="HoR-jK-G7W" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Yd2-Jh-g7g"/>
                 <constraint firstAttribute="bottom" secondItem="HoR-jK-G7W" secondAttribute="bottom" constant="36" id="cBj-6S-yFZ"/>
                 <constraint firstAttribute="trailing" secondItem="TDy-ZB-T1N" secondAttribute="trailing" constant="62" id="cgF-H2-D1T"/>
                 <constraint firstAttribute="bottom" secondItem="dDe-D7-ks6" secondAttribute="bottom" constant="-5" id="dqS-8f-fVO"/>
+                <constraint firstItem="HoR-jK-G7W" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="162.5" id="eCo-dL-f7f"/>
                 <constraint firstItem="Hws-h6-wam" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-60" id="g1o-fR-Z8J"/>
                 <constraint firstItem="uOB-Kd-0F3" firstAttribute="leading" secondItem="4Gf-1Z-b0o" secondAttribute="trailing" constant="10" id="hNb-PA-jqm"/>
                 <constraint firstAttribute="trailing" secondItem="YlB-ou-5MK" secondAttribute="trailing" constant="-35" id="nWj-ba-8aB"/>
@@ -176,7 +176,7 @@
     <resources>
         <image name="Bucket" width="1024" height="833"/>
         <image name="Dock" width="750" height="182"/>
-        <image name="background" width="750" height="1333"/>
+        <image name="background" width="250" height="444"/>
         <image name="bg-sunny-cloud-1" width="159" height="50"/>
         <image name="bg-sunny-cloud-2" width="138" height="49"/>
         <image name="bg-sunny-cloud-3" width="74" height="35"/>

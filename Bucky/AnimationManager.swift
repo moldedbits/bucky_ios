@@ -23,27 +23,22 @@ class AnimationManager {
                 life.center.y -= 200
             }
         })
-        playSound(soundName: SoundName.start.rawValue )
+        playSound(soundName: SoundName.start.rawValue)
     }
 
     func animateScore(label: UILabel, score: Int) {
         label.text = "\(score)"
-        animateWithKeyframes(duration: 0.4, frame1: {
-            label.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-        }) {
-            label.transform = CGAffineTransform(scaleX: 0.834, y: 0.834)
-        }
+        animateKeyframes(duration: 0.4, frames: [
+            {label.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)},
+            {label.transform = CGAffineTransform(scaleX: 0.834, y: 0.834)}] )
         playSound(soundName: SoundName.hit.rawValue)
     }
 
     func animateFoul(view: UIView, lives: [UIImageView], remainingLifeCount: Int) {
         let redView = createView(color: .red)
         view.addSubview(redView)
-        animateWithKeyframes(duration: 0.5, frame1: {
-                redView.alpha = 0.6
-        }) {
-                   redView.alpha = 0.0
-        }
+        animateKeyframes(duration: 0.5, frames: [{redView.alpha = 0.6},
+                                                 {redView.alpha = 0.0}])
         switch remainingLifeCount {
         case 0...2:
             lives[remainingLifeCount].backgroundColor = UIColor.black
@@ -64,14 +59,20 @@ class AnimationManager {
         view.addSubview(dimView)
         view.addSubview(gameOverBanner)
         UIView.animate(withDuration: 2.0, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5.0, options: [], animations: {
-            clouds[0].center.x -= 150
-            clouds[1].center.x += 170
-            clouds[2].center.x -= 150
-            clouds[3].center.x += 150
+            clouds[0].center.x -= 200
+            clouds[1].center.x += 200
+            clouds[2].center.x -= 200
+            clouds[3].center.x += 200
             dimView.alpha = 0.4
             gameOverBanner.transform = gameOverBanner.transform.scaledBy(x: 25, y: 25)
         })
         playSound(soundName: SoundName.end.rawValue)
+    }
+
+    func delay(_ seconds: Double, completion: @escaping ()->Void) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(Int(seconds * 1000.0))) {
+            completion()
+        }
     }
 
     private func playSound(soundName: String){
@@ -93,14 +94,13 @@ class AnimationManager {
         return newView
     }
 
-    private func animateWithKeyframes(duration: Double, frame1: @escaping ()->Void, frame2: @escaping ()->Void) {
-        UIView.animateKeyframes(withDuration: duration, delay: 0.0, options: [], animations: {
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: duration/2, animations: {
-                frame1()
-            })
-            UIView.addKeyframe(withRelativeStartTime: duration/2, relativeDuration: duration/2, animations: {
-                frame2()
-            })
+    private func animateKeyframes(duration : Double, frames: [()->Void]){
+        UIView.animateKeyframes(withDuration: duration, delay: 0, options: [], animations: {
+            for (index,frame) in frames.enumerated(){
+                UIView.addKeyframe(withRelativeStartTime: 0 + Double(index)*(duration/Double(frames.count)), relativeDuration: duration/Double(frames.count), animations: {
+                    frame()
+                })
+            }
         })
     }
 }
