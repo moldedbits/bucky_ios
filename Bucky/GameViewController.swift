@@ -36,6 +36,9 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
 
         gameManager.delegate = self
         gameManager.gameStart()
+        let highScore = UserDefaults.standard.integer(forKey: UserDefaultsKey.highestScore)
+        animations.animateScore(label: highScoreLabel, score: highScore)
+        animations.animateScore(label: scoreLabel, score: 0)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -110,15 +113,9 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
         if !gameManager.isGameOver {
             gameManager.checkBallIsFoulOrCatch(bucket: bucket, ball: fallingObject)
         }
+        if fallingObject.center.y >= bucket.bounds.minY {
         fallingObject.removeFromSuperview()
-    }
-
-    func gameManager(_ gameManager: GameManager, didGameStart fallingObject: FallingObject) {
-        fallingObject.delegate = self
-        self.gameManager(gameManager, didSpawnNewFallingObject: fallingObject)
-        let highScore = UserDefaults.standard.integer(forKey: UserDefaultsKey.highestScore)
-        animations.animateScore(label: highScoreLabel, score: highScore)
-        animations.animateScore(label: scoreLabel, score: 0)
+        }
     }
 
     func gameManager(_ gameManager: GameManager, didSpawnNewFallingObject fallingObject: FallingObject) {
@@ -136,8 +133,12 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
         animations.animateFoul(view: view, lives: [life1,life2,life3], remainingLifeCount: lives)
     }
 
-    func gameManager(_ gameManager: GameManager, didRemoveFromSuperView ball: FallingObject) {
+    func gameManager(_ gameManager: GameManager, didRemoveFromSuperView ball: FallingObject, isFoul: Bool) {
+        if !isFoul {
         ball.removeFromSuperview()
+        } else {
+            ball.threshHoldPoint = dock.bounds.minY
+        }
     }
 
     func gameManager(_ gameManager: GameManager, didUpdateHighScore highScore: Int) {
