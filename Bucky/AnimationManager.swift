@@ -59,10 +59,10 @@ class AnimationManager {
         view.addSubview(dimView)
         view.addSubview(gameOverBanner)
         UIView.animate(withDuration: 2.0, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5.0, options: [], animations: {
-            clouds[0].center.x -= 150
-            clouds[1].center.x += 170
-            clouds[2].center.x -= 150
-            clouds[3].center.x += 150
+            clouds[0].center.x -= 200
+            clouds[1].center.x += 200
+            clouds[2].center.x -= 200
+            clouds[3].center.x += 200
             dimView.alpha = 0.4
             gameOverBanner.transform = gameOverBanner.transform.scaledBy(x: 25, y: 25)
         })
