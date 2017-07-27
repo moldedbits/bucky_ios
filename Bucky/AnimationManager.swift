@@ -23,27 +23,22 @@ class AnimationManager {
                 life.center.y -= 200
             }
         })
-        playSound(soundName: SoundName.start.rawValue )
+        playSound(soundName: SoundName.start.rawValue)
     }
 
     func animateScore(label: UILabel, score: Int) {
         label.text = "\(score)"
-        animateWithKeyframes(duration: 0.4, frame1: {
-            label.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-        }) {
-            label.transform = CGAffineTransform(scaleX: 0.834, y: 0.834)
-        }
+        animateKeyframes(duration: 0.4, frames: [
+            {label.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)},
+            {label.transform = CGAffineTransform(scaleX: 0.834, y: 0.834)}] )
         playSound(soundName: SoundName.hit.rawValue)
     }
 
     func animateFoul(view: UIView, lives: [UIImageView], remainingLifeCount: Int) {
         let redView = createView(color: .red)
         view.addSubview(redView)
-        animateWithKeyframes(duration: 0.5, frame1: {
-                redView.alpha = 0.6
-        }) {
-                   redView.alpha = 0.0
-        }
+        animateKeyframes(duration: 0.5, frames: [{redView.alpha = 0.6},
+                                                 {redView.alpha = 0.0}])
         switch remainingLifeCount {
         case 0...2:
             lives[remainingLifeCount].backgroundColor = UIColor.black
@@ -93,14 +88,13 @@ class AnimationManager {
         return newView
     }
 
-    private func animateWithKeyframes(duration: Double, frame1: @escaping ()->Void, frame2: @escaping ()->Void) {
-        UIView.animateKeyframes(withDuration: duration, delay: 0.0, options: [], animations: {
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: duration/2, animations: {
-                frame1()
-            })
-            UIView.addKeyframe(withRelativeStartTime: duration/2, relativeDuration: duration/2, animations: {
-                frame2()
-            })
+    private func animateKeyframes(duration : Double, frames: [()->Void]){
+        UIView.animateKeyframes(withDuration: duration, delay: 0, options: [], animations: {
+            for (index,frame) in frames.enumerated(){
+                UIView.addKeyframe(withRelativeStartTime: 0 + Double(index)*(duration/Double(frames.count)), relativeDuration: duration/Double(frames.count), animations: {
+                    frame()
+                })
+            }
         })
     }
 }

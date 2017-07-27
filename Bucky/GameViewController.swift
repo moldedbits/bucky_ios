@@ -28,28 +28,6 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet weak var bucket: UIImageView!
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        bucket.isUserInteractionEnabled = true
-        highScoreLabel.layer.cornerRadius = 15
-        highScoreLabel.layer.masksToBounds = true
-        scoreLabel.layer.cornerRadius = 15
-        scoreLabel.layer.masksToBounds = true
-
-        //Initial positions for elements
-        backgroundImage.alpha = 0
-        cloud1.center.x += view.bounds.width
-        cloud2.center.x -= view.bounds.width
-        cloud3.center.x += view.bounds.width
-        cloud4.center.x -= view.bounds.width
-        highScoreLabel.center.x -= 200
-        scoreLabel.center.x += 200
-        bucket.center.x -= 400
-        for imageView in [cactus2, cactus1, dock, life1, life2, life3] {
-            imageView!.center.y += 200
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(dragged(_:)))
@@ -60,8 +38,7 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        viewWillAppear(animated)
-
+        setInitialConfig()
         UIView.animate(withDuration: 2.0, delay: 0, options: [.curveEaseOut], animations: {
             self.backgroundImage.alpha = 1.0
         }, completion: nil)
@@ -85,6 +62,26 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
         animations.animateStart(score: scoreLabel, highscore: highScoreLabel, lives: [life1,life2,life3], bucket: bucket)
     }
 
+    func setInitialConfig(){
+        bucket.isUserInteractionEnabled = true
+        highScoreLabel.layer.cornerRadius = 15
+        highScoreLabel.layer.masksToBounds = true
+        scoreLabel.layer.cornerRadius = 15
+        scoreLabel.layer.masksToBounds = true
+        //Initial positions for elements
+        backgroundImage.alpha = 0
+        cloud1.center.x += view.bounds.width
+        cloud2.center.x -= view.bounds.width
+        cloud3.center.x += view.bounds.width
+        cloud4.center.x -= view.bounds.width
+        highScoreLabel.center.x -= 200
+        scoreLabel.center.x += 200
+        bucket.center.x -= 400
+        for imageView in [cactus2, cactus1, dock, life1, life2, life3] {
+            imageView!.center.y += 200
+        }
+    }
+
     func addViewsToDock(){
         dock.addSubview(life1)
         dock.addSubview(life2)
@@ -104,7 +101,7 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
             return
         }
     }
-
+    //Delegation Methods
     func fallingObject(fallingObject: FallingObject, didCrossThresholdPoint point: CGFloat) {
         gameManager.checkBallIsFoulOrCatch(bucket: bucket, ball: fallingObject)
         fallingObject.removeFromSuperview()
