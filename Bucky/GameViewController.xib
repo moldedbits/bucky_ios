@@ -79,6 +79,13 @@
                         <constraint firstAttribute="width" constant="112" id="7ea-9u-KmE"/>
                     </constraints>
                 </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bucket" translatesAutoresizingMaskIntoConstraints="NO" id="HoR-jK-G7W">
+                    <rect key="frame" x="162" y="581" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="BLt-UK-zIv"/>
+                        <constraint firstAttribute="width" constant="50" id="eiB-iP-Bpf"/>
+                    </constraints>
+                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dock" translatesAutoresizingMaskIntoConstraints="NO" id="dDe-D7-ks6">
                     <rect key="frame" x="0.0" y="595" width="375" height="77"/>
                     <constraints>
@@ -128,13 +135,6 @@
                     <color key="textColor" red="0.53286647799999998" green="0.3818837404" blue="0.20973891019999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bucket" translatesAutoresizingMaskIntoConstraints="NO" id="HoR-jK-G7W">
-                    <rect key="frame" x="162.5" y="581" width="50" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="BLt-UK-zIv"/>
-                        <constraint firstAttribute="width" constant="50" id="eiB-iP-Bpf"/>
-                    </constraints>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>

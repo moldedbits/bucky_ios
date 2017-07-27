@@ -38,8 +38,9 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
         gameManager.gameStart()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
         setInitialConfig()
         UIView.animate(withDuration: 2.0, delay: 0, options: [.curveEaseOut], animations: {
             self.backgroundImage.alpha = 1.0
