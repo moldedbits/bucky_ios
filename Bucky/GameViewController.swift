@@ -27,7 +27,8 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
     @IBOutlet var highScoreLabel: UILabel!
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet weak var bucket: UIImageView!
-
+    @IBOutlet weak var bucketXConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(dragged(_:)))
@@ -94,8 +95,9 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
     @objc func dragged(_ sender: UIPanGestureRecognizer){
         switch sender.state {
         case .changed:
-            UIView.animate(withDuration: 0.03, animations: {
+            UIView.animate(withDuration: 0.05, animations: {
                 self.bucket.center.x = sender.location(in: self.view).x
+                self.bucketXConstraint.constant = sender.location(in: self.view).x - self.bucket.frame.width/2
             })
         default:
             return

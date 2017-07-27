@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="backgroundImage" destination="zjI-oQ-Zkl" id="RPh-iN-Pau"/>
                 <outlet property="bucket" destination="HoR-jK-G7W" id="bhH-i1-uDf"/>
+                <outlet property="bucketXConstraint" destination="eCo-dL-f7f" id="MnW-OV-vbf"/>
                 <outlet property="cactus1" destination="Hws-h6-wam" id="PTg-9i-o5r"/>
                 <outlet property="cactus2" destination="VXn-j8-HIH" id="jbR-jy-YQS"/>
                 <outlet property="cloud1" destination="j6a-Fs-Uy8" id="f5h-4M-ycs"/>
@@ -128,7 +129,7 @@
                     <color key="textColor" red="0.53286647799999998" green="0.3818837404" blue="0.20973891019999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Bucket" translatesAutoresizingMaskIntoConstraints="NO" id="HoR-jK-G7W">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bucket" translatesAutoresizingMaskIntoConstraints="NO" id="HoR-jK-G7W">
                     <rect key="frame" x="162.5" y="581" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="BLt-UK-zIv"/>
@@ -158,6 +159,7 @@
                 <constraint firstAttribute="bottom" secondItem="HoR-jK-G7W" secondAttribute="bottom" constant="36" id="cBj-6S-yFZ"/>
                 <constraint firstAttribute="trailing" secondItem="TDy-ZB-T1N" secondAttribute="trailing" constant="62" id="cgF-H2-D1T"/>
                 <constraint firstAttribute="bottom" secondItem="dDe-D7-ks6" secondAttribute="bottom" constant="-5" id="dqS-8f-fVO"/>
+                <constraint firstItem="HoR-jK-G7W" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="162.5" id="eCo-dL-f7f"/>
                 <constraint firstItem="Hws-h6-wam" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-60" id="g1o-fR-Z8J"/>
                 <constraint firstItem="uOB-Kd-0F3" firstAttribute="leading" secondItem="4Gf-1Z-b0o" secondAttribute="trailing" constant="10" id="hNb-PA-jqm"/>
                 <constraint firstAttribute="trailing" secondItem="YlB-ou-5MK" secondAttribute="trailing" constant="-35" id="nWj-ba-8aB"/>
