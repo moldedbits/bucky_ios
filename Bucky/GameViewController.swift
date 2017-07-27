@@ -32,7 +32,7 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
     override func viewDidLoad() {
         super.viewDidLoad()
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(dragged(_:)))
-        bucket.addGestureRecognizer(panGesture)
+        view.addGestureRecognizer(panGesture)
 
         gameManager.delegate = self
         gameManager.gameStart()
