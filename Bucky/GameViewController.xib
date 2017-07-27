@@ -176,7 +176,7 @@
     <resources>
         <image name="Bucket" width="1024" height="833"/>
         <image name="Dock" width="750" height="182"/>
-        <image name="background" width="250" height="444"/>
+        <image name="background" width="750" height="1333"/>
         <image name="bg-sunny-cloud-1" width="159" height="50"/>
         <image name="bg-sunny-cloud-2" width="138" height="49"/>
         <image name="bg-sunny-cloud-3" width="74" height="35"/>
