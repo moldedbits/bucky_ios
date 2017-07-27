@@ -38,8 +38,9 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
         gameManager.gameStart()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
         setInitialConfig()
         UIView.animate(withDuration: 2.0, delay: 0, options: [.curveEaseOut], animations: {
             self.backgroundImage.alpha = 1.0
@@ -106,7 +107,9 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
     }
     //Delegation Methods
     func fallingObject(fallingObject: FallingObject, didCrossThresholdPoint point: CGFloat) {
-        gameManager.checkBallIsFoulOrCatch(bucket: bucket, ball: fallingObject)
+        if !gameManager.isGameOver {
+            gameManager.checkBallIsFoulOrCatch(bucket: bucket, ball: fallingObject)
+        }
         fallingObject.removeFromSuperview()
     }
 
@@ -143,7 +146,7 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
 
     func gameManagerDidEncounterGameOver(_ gameManager: GameManager) {
         animations.animateEnd(clouds: [cloud1,cloud2,cloud3,cloud4], view: view, life: life1)
-        animations.delay(3.0) {
+        animations.delay(3.5) {
             self.navigationController?.pushViewController(EndViewController(), animated: true)
         }
     }
