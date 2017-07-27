@@ -35,7 +35,7 @@ class GameManager {
         highestScore = UserDefaults.standard.integer(forKey: UserDefaultsKey.highestScore)
         let velocity = 2.0
         let fallingObject = FallingObject( objectType: FallingObject().random()
-            ?? FallingObjectType.ballGreen, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
+            ?? FallingObjectType.ballGreen, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(UInt32(Int(UIScreen.main.bounds.width - 30))) + 10) , y: 0, width: 20, height: 20))
         delegate?.gameManager(self, didGameStart: fallingObject)
         
         repeatFallingObjects()
@@ -49,7 +49,7 @@ class GameManager {
     @objc func spawnNewFallingObject() {
         let velocity = 2.0
         let fallingObject  = FallingObject(objectType: FallingObject().random()
-            ?? FallingObjectType.ballGreen, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
+            ?? FallingObjectType.ballGreen, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(UInt32(Int(UIScreen.main.bounds.width - 30))) + 10), y: 0, width: 20, height: 20))
         delegate?.gameManager(self, didSpawnNewFallingObject: fallingObject)
     }
     
