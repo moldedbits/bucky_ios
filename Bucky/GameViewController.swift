@@ -146,7 +146,6 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
         animations.delay(3.0) {
             self.navigationController?.pushViewController(EndViewController(), animated: true)
         }
-        //        navigationController?.pushViewController(EndViewController(), animated: true)
     }
 
 }
