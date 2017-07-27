@@ -131,8 +131,12 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
     }
 
     func gameManager(_ gameManager: GameManager, didRemoveFromSuperView ball: FallingObject, isFoul: Bool) {
+        if !isFoul {
         ball.removeFromSuperview()
+        } else {
+            ball.threshHoldPoint = dock.bounds.minY
         }
+    }
 
     func gameManager(_ gameManager: GameManager, didUpdateHighScore highScore: Int) {
         animations.animateScore(label: highScoreLabel, score: highScore)
