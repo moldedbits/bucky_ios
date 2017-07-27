@@ -32,7 +32,7 @@ class GameManager {
         currentScore = 0
         leftLives = 3
         highestScore = UserDefaults.standard.integer(forKey: UserDefaultsKey.highestScore)
-        let velocity = Double(arc4random_uniform(6) + 5 )
+        let velocity = 2.0
         let fallingObject = FallingObject( objectType: FallingObject().random()
             ?? FallingObjectType.ballGreen, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
         delegate?.gameManager(self, didGameStart: fallingObject)
@@ -45,8 +45,8 @@ class GameManager {
         timer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(spawnNewFallingObject), userInfo: nil, repeats: true)
     }
     
-    @objc func spawnNewFallingObject(flag: Bool) {
-        let velocity = Double(arc4random_uniform(3) + 1)
+    @objc func spawnNewFallingObject() {
+        let velocity = 2.0
         let fallingObject  = FallingObject(objectType: FallingObject().random()
             ?? FallingObjectType.ballGreen, velocity: velocity, frame: CGRect(x: Int(arc4random_uniform(400)) , y: 0, width: 20, height: 20))
         delegate?.gameManager(self, didSpawnNewFallingObject: fallingObject)
