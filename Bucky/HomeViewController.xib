@@ -36,7 +36,7 @@
                         <constraint firstAttribute="width" constant="170" id="GkE-qN-poQ"/>
                         <constraint firstAttribute="height" constant="80" id="sxv-p2-yf4"/>
                     </constraints>
-                    <state key="normal" image="play_kaushal (1)" backgroundImage="play_kaushal"/>
+                    <state key="normal" image="play_kaushal"/>
                     <connections>
                         <action selector="playGameButtonTapped:" destination="-1" eventType="touchUpInside" id="1gO-Zs-9gD"/>
                     </connections>
@@ -76,6 +76,5 @@
     <resources>
         <image name="bg-sunny" width="640" height="1136"/>
         <image name="play_kaushal" width="249" height="125"/>
-        <image name="play_kaushal (1)" width="249" height="125"/>
     </resources>
 </document>

@@ -23,7 +23,10 @@ class HomeViewController: UIViewController {
         }
     }
     
-    var highScore: Int = 0
+    var highScore: Int {
+        guard let highScore = UserDefaults.standard.value(forKey: UserDefaultsKey.highestScore) as? Int else {return 0}
+        return highScore
+    }
     
     @IBAction func playGameButtonTapped(_ sender: UIButton) {
         navigationController?.pushViewController(GameViewController(), animated: true)
