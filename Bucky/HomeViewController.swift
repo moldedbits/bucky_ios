@@ -23,7 +23,10 @@ class HomeViewController: UIViewController {
         }
     }
     
-    var highScore: Int = 0
+    var highScore: Int {
+        guard let highScore = UserDefaults.standard.value(forKey: UserDefaultsKey.highestScore) as? Int else {return 0}
+        return highScore
+    }
     
     @IBAction func playGameButtonTapped(_ sender: UIButton) {
         navigationController?.pushViewController(GameViewController(), animated: true)
@@ -32,7 +35,7 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 0.7, delay: 0, options: [.autoreverse,.repeat,.allowUserInteraction],animations: {
-        self.playGameButton.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        self.playGameButton.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
         },completion: nil)
     }
 }
