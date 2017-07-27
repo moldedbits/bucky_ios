@@ -31,6 +31,7 @@ class GameManager {
     func gameStart() {
         currentScore = 0
         leftLives = 3
+        UserDefaults.standard.set(0, forKey: UserDefaultsKey.currentScore)
         highestScore = UserDefaults.standard.integer(forKey: UserDefaultsKey.highestScore)
         let velocity = 2.0
         let fallingObject = FallingObject( objectType: FallingObject().random()
