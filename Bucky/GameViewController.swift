@@ -113,6 +113,9 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
         if !gameManager.isGameOver {
             gameManager.checkBallIsFoulOrCatch(bucket: bucket, ball: fallingObject)
         }
+        if fallingObject.center.y >= bucket.bounds.minY {
+        fallingObject.removeFromSuperview()
+        }
     }
 
     func gameManager(_ gameManager: GameManager, didSpawnNewFallingObject fallingObject: FallingObject) {
