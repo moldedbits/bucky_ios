@@ -41,8 +41,7 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
         animations.animateScore(label: scoreLabel, score: 0)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        
+    override func viewWillAppear(_ animated: Bool) {        
         super.viewWillAppear(animated)
         setInitialConfig()
         UIView.animate(withDuration: 2.0, delay: 0, options: [.curveEaseOut], animations: {
@@ -88,15 +87,6 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
         }
     }
 
-    func addViewsToDock(){
-        dock.addSubview(life1)
-        dock.addSubview(life2)
-        dock.addSubview(life3)
-        dock.addSubview(highScoreLabel)
-        dock.addSubview(scoreLabel)
-        view.bringSubview(toFront: dock)
-    }
-
     @objc func dragged(_ sender: UIPanGestureRecognizer){
         switch sender.state {
         case .changed:
@@ -112,9 +102,6 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
     func fallingObject(fallingObject: FallingObject, didCrossThresholdPoint point: CGFloat) {
         if !gameManager.isGameOver {
             gameManager.checkBallIsFoulOrCatch(bucket: bucket, ball: fallingObject)
-        }
-        if fallingObject.center.y >= bucket.bounds.minY {
-        fallingObject.removeFromSuperview()
         }
     }
 
@@ -134,11 +121,7 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
     }
 
     func gameManager(_ gameManager: GameManager, didRemoveFromSuperView ball: FallingObject, isFoul: Bool) {
-        if !isFoul {
         ball.removeFromSuperview()
-        } else {
-            ball.threshHoldPoint = dock.bounds.minY
-        }
     }
 
     func gameManager(_ gameManager: GameManager, didUpdateHighScore highScore: Int) {
@@ -147,10 +130,9 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
 
     func gameManagerDidEncounterGameOver(_ gameManager: GameManager) {
         animations.animateEnd(clouds: [cloud1,cloud2,cloud3,cloud4], view: view, life: life1)
-        animations.delay(3.5) {
+        animations.delay(2.5) {
             self.navigationController?.pushViewController(EndViewController(), animated: true)
         }
     }
-
 }
 
