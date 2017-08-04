@@ -43,6 +43,7 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
 
     override func viewWillAppear(_ animated: Bool) {        
         super.viewWillAppear(animated)
+
         setInitialConfig()
         UIView.animate(withDuration: 2.0, delay: 0, options: [.curveEaseOut], animations: {
             self.backgroundImage.alpha = 1.0
@@ -109,6 +110,7 @@ class GameViewController: UIViewController, GameManagerProtocol, FallingObjectDe
         fallingObject.delegate = self
         fallingObject.threshHoldPoint = bucket.frame.minY
         view.addSubview(fallingObject)
+        gameManager.repeatFallingObjects()
         fallingObject.startFalling()
     }
 
