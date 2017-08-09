@@ -37,8 +37,14 @@ class GameManager {
     }
     
     func repeatFallingObjects() {
-        let delay = 2.0
-        timer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(spawnNewFallingObject), userInfo: nil, repeats: true)
+        var delay : Double {
+            if (2.0 - Double(currentScore)/150 <= 0 ) {
+                return 0.8
+            } else {
+                return 2.0 - Double(currentScore)/100
+            }
+        }
+        timer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(spawnNewFallingObject), userInfo: nil, repeats: false)
     }
     
     @objc func spawnNewFallingObject() {
@@ -49,7 +55,7 @@ class GameManager {
     }
     
     func checkBallIsFoulOrCatch(bucket: UIImageView, ball: FallingObject) {
-        let range = Int(bucket.frame.width/2) - 10
+        let range = Int(bucket.frame.width/2) - Int(ball.bounds.midY)
         let midXOfBucket = Int(bucket.frame.midX)
         let midXOfFallingObject = Int(ball.frame.midX)
         if midXOfFallingObject - range <= midXOfBucket && midXOfBucket <= midXOfFallingObject + range {

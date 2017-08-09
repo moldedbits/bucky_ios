@@ -72,7 +72,7 @@ class FallingObject: UIView {
     
     func startFalling() {
         let duration = maxVelocity / velocity
-        let distanceToTravel = (threshHoldPoint) - frame.origin.y - 10
+        let distanceToTravel = (threshHoldPoint) - bounds.midY
         alpha = 0
         
         UIView.animate(withDuration: 1) {
